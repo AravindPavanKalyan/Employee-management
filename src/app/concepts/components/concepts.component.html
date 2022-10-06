@@ -1,0 +1,214 @@
+<div class="container-fluid mt-3">
+  <p>
+    data receiveed from child component : {{ dataReceivedFromChildComp?.name }}
+  </p>
+  <p>
+    data receiveed from child component using viewChild:
+    {{ viewChildData?.name }}
+  </p>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a
+        class="nav-item nav-link active"
+        data-bs-toggle="tab"
+        data-bs-target="#basic-databinding"
+        role="tab"
+        aria-controls="basic-databinding"
+        aria-selected="true"
+        >Basic Data Binding</a
+      >
+      <a
+        class="nav-item nav-link"
+        data-bs-toggle="tab"
+        data-bs-target="#cpb-databinding"
+        role="tab"
+        aria-controls="cpb-databinding"
+        aria-selected="true"
+        >Custom Property Binding</a
+      >
+      <a
+        class="nav-item nav-link"
+        data-bs-toggle="tab"
+        data-bs-target="#ceb-databinding"
+        role="tab"
+        aria-controls="ceb-databinding"
+        aria-selected="true"
+        >Custom Event Binding</a
+      >
+      <a
+        class="nav-item nav-link"
+        data-bs-toggle="tab"
+        data-bs-target="#directives-tab"
+        role="tab"
+        aria-controls="directives-tab"
+        aria-selected="false"
+        >Directives</a
+      >
+      <a
+        class="nav-item nav-link"
+        data-bs-toggle="tab"
+        data-bs-target="#pipes-tab"
+        role="tab"
+        aria-controls="pipes-tab"
+        aria-selected="false"
+        >Pipes</a
+      >
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div
+      class="tab-pane fade show active"
+      id="basic-databinding"
+      role="tabpanel"
+      aria-labelledby="basic-databinding-tab"
+    >
+      <!-- interpolation -->
+      <h2>Basic Data Binding</h2>
+      <hr />
+      <h3>interpolation</h3>
+      <p>App Name : {{ appName }}</p>
+      <input type="text" value="{{ companyProfile.name }}" />
+      <div title="{{ companyProfile.employeesCount }}">
+        MouseOver to see Cognizant's employees count
+      </div>
+
+      <!-- property binding -->
+      <hr />
+      <h3>property binding</h3>
+      Team size : <input type="text" [value]="teamSize" />
+      <div [title]="teamSize">MouseOver to see team count</div>
+
+      <!-- event binding -->
+      <h3>event binding</h3>
+      <hr />
+      <button class="btn btn-primary" (click)="handleClick($event.target)">
+        click me
+      </button>
+
+      <!-- 2-way binding -->
+      <hr />
+      <h3>2 way binding</h3>
+      <p>{{ courseName }}</p>
+      <input type="text" value="{{ courseName }}" /><br />
+      <input type="text" [value]="courseName" /><br />
+      <input type="text" [(ngModel)]="courseName" />
+    </div>
+
+    <div
+      class="tab-pane fade"
+      id="cpb-databinding"
+      role="tabpanel"
+      aria-labelledby="cpb-databinding-tab"
+    >
+      <h2>Parent to Child Comp Communication using Custom Property Binding</h2>
+
+      <!-- Step 3: pass the data thru the age property -->
+      <app-cpb></app-cpb>
+      <app-cpb [age]="10"></app-cpb>
+      <app-cpb [age]="20"></app-cpb>
+      <app-cpb [age]="myAge"></app-cpb>
+    </div>
+
+    <div
+      class="tab-pane fade"
+      id="ceb-databinding"
+      role="tabpanel"
+      aria-labelledby="ceb-databinding-tab"
+    >
+      <h2>Child to Parent Comp Communication using Custom Event Binding</h2>
+      <!-- Step 4 of CEB: LEt's add an event handler for the custom event-->
+      <app-ceb (profileLoaded)="handleProfileLoaded($event)"></app-ceb>
+      <!-- Step 5 of CEB: Let's get the data thru $event-->
+      <hr />
+    </div>
+
+    <div
+      class="tab-pane fade"
+      id="directives-tab"
+      role="tabpanel"
+      aria-labelledby="directives-tab"
+    >
+      <h2>Directives</h2>
+
+      <h3>[ngStyle] Demo</h3>
+      <div
+        [ngStyle]="{
+          'background-color': 'green',
+          'font-family': 'Georgia',
+          'font-style': 'italic',
+          'font-size': '40px',
+          color: 'white'
+        }"
+      >
+        This div has ngStyle attribute directive
+      </div>
+
+      <h3>[ngIf] demo</h3>
+      <div class="alert alert-success" *ngIf="isLoggedIn; else userLoggedOut">
+        u r logged in! you can now access premium features of application
+      </div>
+      <ng-template #userLoggedOut>
+        <div class="alert alert-danger">
+          Please log in to access premium features of the app
+        </div>
+      </ng-template>
+      <!-- <div class="alert alert-warning" *ngIf="!isLoggedIn">
+        Please log in to access premium features of the app
+      </div> -->
+
+      <h3>[ngFor] demo</h3>
+      <ul>
+        <div *ngFor="let skill of skills; let i = index">
+          <li *ngIf="i < 4">{{ i + 1 }}. {{ skill }}</li>
+        </div>
+      </ul>
+
+      <hr />
+      <!-- ngSwitch -->
+      <h3>[ngSwitch] demo</h3>
+      <input type="number" [(ngModel)]="dayOfWeek" />
+      <div [ngSwitch]="dayOfWeek">
+        <div *ngSwitchCase="1">monday</div>
+        <div *ngSwitchCase="2">tuesday</div>
+        <div *ngSwitchCase="3">wednesday</div>
+        <div *ngSwitchCase="4">thursday</div>
+        <div *ngSwitchCase="5">friday</div>
+        <div *ngSwitchCase="6">saturday</div>
+        <div *ngSwitchCase="7">sunday</div>
+        <div *ngSwitchDefault>invalid day</div>
+      </div>
+
+      <hr />
+      <!-- custom directive demo -->
+      <h3>custom directive demo</h3>
+      <div appColorizer>random text....</div>
+
+      <!-- demoif -->
+      <hr />
+      <h4>custom structural directive - demo</h4>
+      <div *appDemoIf="isLoggedIn">
+        <div class="alert alert-success">u r logged in</div>
+      </div>
+      <div *appDemoIf="!isLoggedIn">
+        <div class="alert alert-danger">u r logged out</div>
+      </div>
+
+      <h4>Custom Structural Directive - Demo of unless</h4>
+      <div *appUnless="isLoggedIn">
+        <button class="btn btn-danger">Logout</button>
+      </div>
+      <div *appUnless="!isLoggedIn">
+        <button class="btn btn-success">Login</button>
+      </div>
+    </div>
+
+    <div
+      class="tab-pane fade"
+      id="pipes-tab"
+      role="tabpanel"
+      aria-labelledby="pipes-tab"
+    >
+      <h2>Pipes</h2>
+    </div>
+  </div>
+</div>
