@@ -48,7 +48,7 @@ export class ColorizerDirective{
 
     const newSpan = this.renderer.createElement('span'); //<span></span>
     this.renderer.setStyle(newSpan, 'font-size', '12px');
-    const developedByText = this.renderer.createText('Developed by Kalyan'); 
+    const developedByText = this.renderer.createText('Developed by Kalyan '); 
     this.renderer.appendChild(newSpan, developedByText); //<span>Developed by Kalyan</span>
     this.renderer.appendChild(this.divEl, newSpan);
   }

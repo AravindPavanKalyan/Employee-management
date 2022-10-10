@@ -4,7 +4,7 @@
   </p>
   <p>
     data receiveed from child component using viewChild:
-    {{ viewChildData?.name }}
+    {{ child.profile.name }}
   </p>
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -181,7 +181,7 @@
       <hr />
       <!-- custom directive demo -->
       <h3>custom directive demo</h3>
-      <div appColorizer>random text....</div>
+      <section data-testid="colorizerEls" appColorizer>random text....</section>
 
       <!-- demoif -->
       <hr />

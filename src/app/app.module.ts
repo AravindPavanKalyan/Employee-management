@@ -18,6 +18,10 @@ import { DemoIfDirective } from './concepts/directives/demo-if.directive';
 import { UnlessDirective } from './concepts/directives/unless.directive';
 import { UnitTestingDemoComponent } from './unit-testing-demo/components/unit-testing-demo/unit-testing-demo.component';
 import { CounterComponent } from './unit-testing-demo/components/counter/counter.component';
+import { HighlightDirective } from './unit-testing-demo/directives/highlight.directive';
+import { EmployeesModule } from './employees/employees.module';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,12 +39,16 @@ import { CounterComponent } from './unit-testing-demo/components/counter/counter
     DemoIfDirective,
     UnlessDirective,
     UnitTestingDemoComponent,
-    CounterComponent
+    CounterComponent,
+    HighlightDirective,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    EmployeesModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

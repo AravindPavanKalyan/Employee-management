@@ -20,7 +20,10 @@ export class ConceptsComponent implements OnInit, AfterViewInit{
   dayOfWeek:any = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 
   // view child related
-  @ViewChild(CebComponent) child!:CebComponent
+  @ViewChild(CebComponent, {static:false}) child!:CebComponent
+  
+  // view_child related
+  viewChildData: any;
   
   //interpolation
   appName = 'Employee Manager App!';
@@ -41,9 +44,6 @@ export class ConceptsComponent implements OnInit, AfterViewInit{
   // two way binding related
   courseName = 'angular';
 
-  // view_child related
-  viewChildData: any;
-
   // eslint-disable-next-line no-unused-vars
   constructor(private cd:ChangeDetectorRef) {}
 
@@ -52,8 +52,8 @@ export class ConceptsComponent implements OnInit, AfterViewInit{
   //view_child related
   ngAfterViewInit(){
     console.log(this.child.profile);
-    this.viewChildData = this.child.profile
-    this.cd.detectChanges()
+    this.viewChildData = this.child.profile;
+    this.cd.detectChanges();
   }
 
   // event binding related
