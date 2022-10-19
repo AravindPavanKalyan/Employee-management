@@ -1,4 +1,6 @@
 import { AfterContentInit, Component, ContentChild, ElementRef, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { Url } from 'url';
 
 @Component({
   selector: 'app-menu',
@@ -10,6 +12,14 @@ import { AfterContentInit, Component, ContentChild, ElementRef, OnInit } from '@
   `]
 })
 export class MenuComponent implements OnInit, AfterContentInit{
+
+  menus = [
+    {link : '/concepts', menuName : 'Concepts'},
+    {link : '/about', menuName : 'About'},
+    {link : '/employees', menuName : 'Employee Management App'},
+    {link : '/unit-testing', menuName : 'Unit Testing'},
+    {link : '/products', menuName : 'Products'}
+  ];
 
   // only footer backToTop is sending an element with elementRef #backToTop
   @ContentChild('backToTop') b2tElement!: ElementRef;

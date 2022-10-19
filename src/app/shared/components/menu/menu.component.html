@@ -3,20 +3,8 @@
   <li class="nav-item">
     <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]={exact:true} routerLink="/">Home</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="/concepts">Concepts</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="/about">About</a>
-  </li>
-  <li class="nav-item redText">
-    <a class="nav-link" routerLinkActive="active" routerLink="/employees">Employee Management App</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="/unit-testing">Unit Testing</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="/products">Products</a>
+  <li class="nav-item" *ngFor="let menu of menus">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="menu.link">{{menu.menuName}}</a>
   </li>
   <ng-content select="[menuComp]"></ng-content>
 </ul>
