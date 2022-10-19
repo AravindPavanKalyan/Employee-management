@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { IEmployee } from '../../models/iemployee';
 import { EmployeeService } from '../../services/employee.service';
@@ -15,7 +16,8 @@ export class ListEmployeesComponent implements OnInit, OnDestroy {
   employees: IEmployee[] = [];
   employeesSubscription!: Subscription;
 
-  constructor( private employeeService: EmployeeService) { 
+  constructor(private titleService: Title, private employeeService: EmployeeService) { 
+    titleService.setTitle('Employee List');
     console.log('Inside Constructor')
   }
 

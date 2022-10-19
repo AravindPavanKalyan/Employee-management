@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { CartDataService } from 'src/app/shared/services/cart-data.service';
 import { IProduct } from '../../models/iproduct';
 
@@ -12,7 +13,9 @@ export class CartViewComponent implements OnInit {
 
   cartItemsList!: IProduct[];
 
-  constructor(private cartDataService: CartDataService) { }
+  constructor(private titleService: Title, private cartDataService: CartDataService) {
+    titleService.setTitle('Cart');
+  }
 
   ngOnInit(): void {
     this.cartDataService.latestCartItems.subscribe( (cartItems: IProduct[]) => {

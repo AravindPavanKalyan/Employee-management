@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { CebComponent } from './ceb/ceb.component';
 
 @Component({
@@ -49,7 +50,9 @@ export class ConceptsComponent implements OnInit, AfterViewInit{
   courseName = 'angular';
 
   // eslint-disable-next-line no-unused-vars
-  constructor(private cd:ChangeDetectorRef) {}
+  constructor(private cd:ChangeDetectorRef, private titleService: Title) {
+    titleService.setTitle('Concepts');
+  }
 
   ngOnInit(): void {}
 
