@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { UnitTestingDemoComponent } from './unit-testing-demo.component';
 import { CounterComponent } from '../counter/counter.component';
@@ -41,4 +41,22 @@ describe('UnitTestingDemoComponent', () => {
     const bgColor = highlightWrapperEl.style.backgroundColor;
     expect(bgColor).toBe('skyblue');
   });
+
+  // approach #1 using timeout
+  it('has featureName as "Listing Employess" [approach #1]', fakeAsync(() => {
+    component.ngOnInit();
+    tick(2001);
+    expect(component.featureName).toEqual('Testing the ngOnInit with fakeAsync and tick')
+  }));
+
+  // approach #2 using timeout
+  it('has featureName with proper text [approach #2]', ((done) => {
+    component.ngOnInit();
+    setTimeout( () => {
+      expect(component.featureName).toEqual('Testing the ngOnInit with fakeAsync and tick')
+      done();
+    }, 2001);
+  
+  }));
+
 });

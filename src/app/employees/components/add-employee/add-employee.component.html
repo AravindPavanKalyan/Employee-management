@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <h1>Add Employee</h1>
-      <button class="btn btn-dark">Go Back</button>
+      <button class="btn btn-dark" (click)="handleGoBack()">Go Back</button>
     </div>
  
     <!-- Step 3: patchup form tag with the FormGroup in ts -->
@@ -15,44 +15,44 @@
           <!-- goto ts for step 5-->
           <input type="text" class="form-control" 
           placeholder="Enter Name" formControlName="name"
+          id="nameInput"
           [ngClass]="{'is-invalid': addEmployeeForm.get('name')?.touched && addEmployeeForm.get('name')?.invalid}"/>
           <!-- step6: displaying validation related msg -->
           <div class="invalid-feedback">
-            <div>Name is required</div>
+           <div id="nameReqErrMsg" *ngIf="addEmployeeForm.get('name')?.invalid" >Name is required</div>
           </div>
         </div>
       </div>
       <div class="form-group row mb-3">
         <label for="staticPhone" class="col-sm-2 col-form-label">Phone</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" placeholder="Enter Phone" formControlName="phone"
+          <input type="text" class="form-control" id="phoneInput"
+          placeholder="Enter Phone" formControlName="phone"
           [ngClass]="{'is-invalid': addEmployeeForm.get('phone')?.touched && addEmployeeForm.get('phone')?.invalid}"/>
           <div class="invalid-feedback">
-            <div>Phone is required</div>
-            <!-- 
-            <div>TODO: Min 10 Characters</div> -->
+            <div *ngIf="addEmployeeForm.get('phone')?.errors?.['required']" id="phoneReqErrMsg">Phone is required</div>
+            <div *ngIf="addEmployeeForm.get('phone')?.errors?.['maxlength']" id="maxedPhone">Max length is 10</div>
+            <div *ngIf="addEmployeeForm.get('phone')?.errors?.['minlength']" id="insufficientPhone">Min length is 7</div>
+
           </div>
         </div>
       </div>
       <div class="form-group row mb-3">
         <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-10">
-          <input type="email" class="form-control" placeholder="Enter Email" formControlName="email"
+          <input type="email" id="emailInput"
+          class="form-control" placeholder="Enter Email" formControlName="email"
           [ngClass]="{'is-invalid': addEmployeeForm.get('email')?.touched && addEmployeeForm.get('email')?.invalid}"/>
           <div class="invalid-feedback">
-            <div *ngIf="addEmployeeForm.get('email')?.errors?.['required']">Email is required</div>
-            <div *ngIf="addEmployeeForm.get('email')?.errors?.['email']">Email seems to be not valid</div>
+            <div *ngIf="addEmployeeForm.get('email')?.errors?.['required']" id="emailReqErrMsg">Email is required</div>
+            <div *ngIf="addEmployeeForm.get('email')?.errors?.['email']" id="invalidEmail">Email seems to be not valid</div>
           </div>
         </div>
       </div>
  
-      <div class="alert alert-success">
-        Saved Successfully
-      </div>
- 
       <div class="form-group row">
         <div class="col-sm-10 offset-sm-2">
-          <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+          <button type="submit" class="btn btn-primary submitBtn" [disabled]="addEmployeeForm.invalid">Submit</button>
           <!-- TODO: Learn about disabling the submit button in case of error-->
         </div>
       </div>

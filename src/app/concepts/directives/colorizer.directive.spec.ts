@@ -4,9 +4,9 @@ import { ColorizerDirective } from './colorizer.directive';
 
 @Component({
   template: `
-  <section appColorizer>
+  <div appColorizer>
     colorizer directive testing
-  </section>
+</div>
   `
 })
 class MockComponent {} // No need to export as we will use this component her itself
@@ -28,7 +28,7 @@ describe('ColorizerDirective', () => {
   });
 
   it('should have a <div> with background color red, colour rgb(255, 255, 255), height 100px and padding 20px', () => {
-    const divElement: HTMLElement = fixture.nativeElement.querySelector('section');
+    const divElement: HTMLElement = fixture.nativeElement.querySelector('div');
     // console.log(divElement);
     const divElementBgColor = divElement.style.backgroundColor;
     expect(divElementBgColor).toBe('red');
@@ -41,7 +41,7 @@ describe('ColorizerDirective', () => {
   });
 
   it('should have a <p> inside <div>', () => {
-    const divElement: HTMLElement = fixture.nativeElement.querySelector('section');
+    const divElement: HTMLElement = fixture.nativeElement.querySelector('div');
     console.log(divElement);
     const pEl = divElement.querySelector('p');
     expect(pEl).toBeTruthy();

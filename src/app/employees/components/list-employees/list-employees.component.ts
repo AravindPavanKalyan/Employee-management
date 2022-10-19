@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { IEmployee } from '../../models/iemployee';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-list-employees',
@@ -6,14 +9,41 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class ListEmployeesComponent implements OnInit {
+export class ListEmployeesComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  isLoading = true;
+  employees: IEmployee[] = [];
+  employeesSubscription!: Subscription;
 
-  employees = [{id:1, empName:'John Doe'}]
-
+  constructor( private employeeService: EmployeeService) { 
+    console.log('Inside Constructor')
+  }
 
   ngOnInit(): void {
+    console.log('Inside ngOnInit')
+    // ideal place for REST API calls
+    //2.send the req to the service
+    // this.spinner.show();
+    this.isLoading = true;
+    this.employeesSubscription =  this.employeeService.getEmployees()
+      .subscribe((res:IEmployee[]) => { // 3.get the res
+        // console.log(res);
+        this.employees = res;
+        // this.spinner.hide();
+        this.isLoading = false;
+      });
+
+  }
+
+  ngOnDestroy(): void {
+    // whenever the comp goes out of the view -- this wll be executed
+    // ideal place for you to clear data, clear interval & timeout, unsubscribe
+    console.log('Inside Destroy');
+    // if(this.employees && this.employees.length > 0) {
+    //   this.employees.length = 0;
+    // }
+    this.employeesSubscription.unsubscribe();
+    
   }
 
 }

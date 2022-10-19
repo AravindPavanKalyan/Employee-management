@@ -31,6 +31,10 @@ export class ConceptsComponent implements OnInit, AfterViewInit{
     name: 'Cognizant',
     employeesCount: 341000
   };
+
+  //pipes
+  dummyText = 'Thanks for joining the session. warm welcome to Learning and Development team';
+  today: Date = new Date();
  
   //Custom Property binding related
   myAge = 32;

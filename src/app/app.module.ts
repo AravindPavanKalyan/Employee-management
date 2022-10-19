@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +24,8 @@ import { HighlightDirective } from './unit-testing-demo/directives/highlight.dir
 import { EmployeesModule } from './employees/employees.module';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EllipsisPipe } from './shared/pipes/ellipsis.pipe';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [
@@ -41,12 +45,16 @@ import { HttpClientModule } from '@angular/common/http';
     UnitTestingDemoComponent,
     CounterComponent,
     HighlightDirective,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EllipsisPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     EmployeesModule,
+    ProductsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
     HttpClientModule
   ],

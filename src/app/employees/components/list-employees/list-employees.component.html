@@ -9,16 +9,25 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    
-    <div class="card col-sm-3">
-      <div class="card-body">
-        <div *ngFor="let emp of employees">
-          <h5 class="card-title">{{emp.empName}}</h5>
-          <p class="card-text">1212312</p>
-          <a [routerLink]="['/employees', emp.id]" class="card-link">View Details</a>
+  
+
+  <div class="spinner-border" *ngIf="isLoading else empList">
+  </div>
+
+  <ng-template #empList>
+    <div class="row">
+      <div class="card col-sm-3" *ngFor="let emp of employees">
+        <div class="card-body">
+          <div >
+            <h5 class="card-title">{{emp.name}}</h5>
+            <p class="card-text">{{emp.phone}}</p>
+            <a routerLink="/employees/{{emp.id}}" class="card-link">View Details</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-template>
 </div>
+<!-- <ngx-spinner *ngIf="showLoader" Color="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+  <p style="color: white">Please Wait. </p>  
+  </ngx-spinner>   -->

@@ -7,6 +7,7 @@ import { ConceptsComponent } from './concepts.component';
 import { ColorizerDirective } from '../directives/colorizer.directive';
 import { DemoIfDirective } from '../directives/demo-if.directive';
 import { UnlessDirective } from '../directives/unless.directive';
+import { EllipsisPipe } from 'src/app/shared/pipes/ellipsis.pipe';
 
 describe('ConceptsComponent', () => {
   let component: ConceptsComponent;
@@ -14,7 +15,15 @@ describe('ConceptsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConceptsComponent, CebComponent, CpbComponent, ColorizerDirective, UnlessDirective, DemoIfDirective ],
+      declarations: [
+        ConceptsComponent,
+        CebComponent, 
+        CpbComponent, 
+        ColorizerDirective, 
+        UnlessDirective,
+        DemoIfDirective,
+        EllipsisPipe
+      ],
       imports: [
         FormsModule
       ]

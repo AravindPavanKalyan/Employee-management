@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  employeeRestApi: 'https://jsonplaceholder.typicode.com/users'
+
 };
