@@ -26,6 +26,7 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 import { HttpClientModule } from '@angular/common/http';
 import { EllipsisPipe } from './shared/pipes/ellipsis.pipe';
 import { ProductsModule } from './products/products.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ProductsModule } from './products/products.module';
     FormsModule,
     EmployeesModule,
     ProductsModule,
+    AuthenticationModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,

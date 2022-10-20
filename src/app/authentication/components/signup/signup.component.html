@@ -1,0 +1,120 @@
+<div class="row">
+  <form
+    class="col-md-4 offset-md-4"
+    [formGroup]="signupForm"
+    (ngSubmit)="handleSignup()"
+  >
+    <h1 class="h3 mb-3 fw-normal">Please Signup</h1>
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control"
+        id="emailInput"
+        placeholder="name@example.com"
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid':
+            signupForm.get('email')?.touched && signupForm.get('email')?.invalid
+        }"
+      />
+      <label for="floatingInput">Email address</label>
+      <div class="invalid-feedback">
+        <div
+          *ngIf="signupForm.get('email')?.errors?.['required']"
+          id="emailReqErrMsg"
+        >
+          Email is required
+        </div>
+        <div
+          *ngIf="signupForm.get('email')?.errors?.['email']"
+          id="invalidEmail"
+        >
+          Email seems to be not valid
+        </div>
+      </div>
+    </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="passwordInput"
+        placeholder="Password"
+        formControlName="password"
+        name="password"
+        [ngClass]="{
+          'is-invalid':
+            signupForm.get('password')?.touched &&
+            signupForm.get('password')?.invalid
+        }"
+      />
+      <label for="floatingPassword">Password</label>
+      <div class="invalid-feedback">
+        <div
+          id="passwordReqErrMsg"
+          *ngIf="signupForm.get('password')?.errors?.['required']"
+        >
+          Password is required
+        </div>
+        <div
+          *ngIf="signupForm.get('password')?.errors?.['maxlength']"
+          id="maxedPassword"
+        >
+          Max length is 10
+        </div>
+        <div
+          *ngIf="signupForm.get('password')?.errors?.['minlength']"
+          id="minLengthPassword"
+        >
+          Max length is 6
+        </div>
+      </div>
+    </div>
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="confirmPasswordInput"
+        placeholder="Confirm Password"
+        name="confirmPassword"
+        formControlName="confirmPassword"
+        [ngClass]="{
+          'is-invalid':
+            signupForm.get('confirmPassword')?.touched &&
+            signupForm.get('confirmPassword')?.invalid
+        }"
+      />
+      <label for="floatingPassword1">Confirm Password</label>
+      <div class="invalid-feedback">
+        <div
+          id="confirmPasswordReqErrMsg"
+          *ngIf="signupForm.get('password')?.errors?.['required']"
+        >
+          Password is required
+        </div>
+        <div
+          *ngIf="signupForm.get('confirmPassword')?.errors?.['maxlength']"
+          id="maxedPassword"
+        >
+          Max length is 10
+        </div>
+        <div
+          *ngIf="signupForm.get('confirmPassword')?.errors?.['minlength']"
+          id="minLengthPassword"
+        >
+          Max length is 6
+        </div>
+      </div>
+    </div>
+    <button
+      class="w-100 btn btn-lg btn-primary"
+      type="submit"
+      [disabled]="signupForm.invalid"
+    >
+      Signup
+    </button>
+    <div class="mt-3">
+      <p>Already Registered?</p>
+      <a routerLink="/auth/login">Login Now </a>
+    </div>
+  </form>
+</div>

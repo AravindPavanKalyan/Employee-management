@@ -16,10 +16,12 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <app-menu>
           <li class="nav-item" menuComp>
-            <a class="nav-link" href="#">Login</a>
+            <!-- <a class="nav-link" href="#">Login</a> -->
+            <a class="nav-link" routerLinkActive="active" routerLink="/auth/login">Login</a>
           </li>
           <li class="nav-item" menuComp>
-            <a class="nav-link" href="#">Signup</a>
+            <!-- <a class="nav-link" href="#">Signup</a> -->
+            <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">Signup</a>
           </li>
         </app-menu>
         <button class="btn btn-danger"  (click)="navigationHelper.navigateTo('/products/cart')">Cart ({{cartItemsCount}})</button>
