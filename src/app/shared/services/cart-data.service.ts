@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, take } from 'rxjs';
 import { IProduct } from 'src/app/products/models/iproduct';
 
 @Injectable({
@@ -31,6 +31,13 @@ export class CartDataService {
   constructor() { }
 
   addToCartItems(product: IProduct){
+    //we should connect with the rest api b/e and add the above product --- and implement relevant logic here
     console.log('product in cartdata', product);
+    // let's work adding this product to existing cart items
+    this.latestCartItems.pipe(take(1)).subscribe((existingCartItems: IProduct[]): void => {
+      console.log(existingCartItems);
+      const updatedCartItems = [...existingCartItems, product];
+      this.cartItems.next(updatedCartItems);
+    });
   }
 }
