@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { IAuthentication } from '../../models/iauthentication';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -37,16 +38,12 @@ export class SignupComponent implements OnInit {
   }
 
   handleSignup() {
-    // console.log('sent in auth comp', this.signupForm.value);
-    // this.authService.signupUser(this.signupForm.value);
-    // this.toastr.success('signup succesfull');
-
     // 2. send the above form data to the service
     console.log('sent in auth comp', this.signupForm.value);
     this.authService.signupUser(this.signupForm.value).subscribe({
-      next: (res: any) => {
+      next: (res: IAuthentication) => {
         console.log('res in comp', res);
-        if (res.id && res.token) {
+        if (res.id) {
           this.toastr.success('signup succesfull');
         }
       },

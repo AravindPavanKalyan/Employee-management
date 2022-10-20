@@ -1,19 +1,56 @@
 <div class="row">
-  <form class="col-md-4 offset-md-4">
+  <form class="col-md-4 offset-md-4"
+  #loginForm="ngForm"
+  (ngSubmit)="handleLogin(loginForm)"
+  >
     <h1 class="h3 mb-3 fw-normal">Please Login</h1>
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput"  
-      placeholder="name@example.com">
+      <input
+        type="email"
+        class="form-control"
+        id="floatingInput"
+        placeholder="name@example.com"
+        name="email"
+        #email="ngModel"
+        [ngClass]="{
+          'is-invalid': email.touched && email.invalid
+        }"
+        required ngModel email
+      />
+      <div class="invalid-feedback">
+        <div *ngIf="email.errors?.['required']">
+          Email required
+        </div>
+      </div>
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" 
-      placeholder="Password" name="password" ngModel>
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Password"
+        name="password"
+        #password="ngModel"
+        [ngClass]="{
+          'is-invalid': password.touched && password.invalid
+        }"
+        required
+        ngModel
+      />
       <label for="floatingPassword">Password</label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+    <div class="invalid-feedback">
+      <div *ngIf="password.errors?.['required']">
+        Password required
+      </div>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit" 
+    [disabled]="loginForm.invalid"
+    >Login</button>
     <div class="mt-3">
-      <p>Not Registered? 
+      <p>
+        Not Registered?
         <a routerLink="/auth/signup">Signup Now for Free</a>
       </p>
     </div>

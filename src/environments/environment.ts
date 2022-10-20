@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   employeeRestApi: 'https://jsonplaceholder.typicode.com/users',
-  loginRestApi: 'https://reqres.in/api/register'
+  signupRestApi: 'https://reqres.in/api/register',
+  loginRestApi: 'https://reqres.in/api/login'
 };
 
 /*
