@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: '', component : HomeComponent},
   {path: 'concepts', component : ConceptsComponent},
   {path: 'about', component : AboutComponent, canActivate: [ AuthGuard ]},
-  {path: 'unit-testing', component : UnitTestingDemoComponent},
+  {path: 'unit-testing', component : UnitTestingDemoComponent, canActivate: [ AuthGuard ]},
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent}
 ];
 
