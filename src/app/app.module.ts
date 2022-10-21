@@ -23,10 +23,11 @@ import { CounterComponent } from './unit-testing-demo/components/counter/counter
 import { HighlightDirective } from './unit-testing-demo/directives/highlight.directive';
 import { EmployeesModule } from './employees/employees.module';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EllipsisPipe } from './shared/pipes/ellipsis.pipe';
 import { ProductsModule } from './products/products.module';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,11 @@ import { AuthenticationModule } from './authentication/authentication.module';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true
+    }
+  ],
+  bootstrap: [AppComponent] // appModule should be bootstraped with AppComponent
 })
 export class AppModule { }
