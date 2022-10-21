@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { NavigationHelper } from 'src/app/shared/utils/navigation-helper';
 import { IAuthentication } from '../../models/iauthentication';
 import { AuthService } from '../../services/auth.service';
 
@@ -15,7 +16,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public navigationHelper: NavigationHelper
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +46,8 @@ export class SignupComponent implements OnInit {
       next: (res: IAuthentication) => {
         console.log('res in comp', res);
         if (res.id) {
-          this.toastr.success('signup succesfull');
+          this.toastr.success('signup successful');
+          this.navigationHelper.navigateTo('/auth/login');
         }
       },
       error: (error: any) => {
@@ -57,4 +60,5 @@ export class SignupComponent implements OnInit {
     });
     this.signupForm.reset();
   }
+
 }

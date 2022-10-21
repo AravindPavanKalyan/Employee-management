@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { NavigationHelper } from 'src/app/shared/utils/navigation-helper';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public navigationHelper: NavigationHelper
   ) {}
 
   ngOnInit(): void {}
@@ -23,7 +25,8 @@ export class LoginComponent implements OnInit {
         console.log('comp', res);
         if(res.token){
           console.log(res);
-          this.toastr.success('saved succesfully');
+          this.toastr.success('Login successful');
+          this.navigationHelper.navigateTo('/');
         }
       },
       error: (error: any) => {
@@ -35,4 +38,5 @@ export class LoginComponent implements OnInit {
     });
 
   }
+
 }
