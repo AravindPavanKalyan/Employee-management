@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
           const redirectTo = this.activatedRoute.snapshot.queryParams['redirectTo'];
           this.toastr.success('Login successful');
           this.router.navigateByUrl(redirectTo);
-          // this.navigationHelper.navigateTo('/');
         }
       },
       error: (error: any) => {
