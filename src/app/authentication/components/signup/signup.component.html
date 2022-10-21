@@ -59,13 +59,13 @@
           *ngIf="signupForm.get('password')?.errors?.['maxlength']"
           id="maxedPassword"
         >
-          Max length is 10
+          Password can't be more than 10
         </div>
         <div
           *ngIf="signupForm.get('password')?.errors?.['minlength']"
           id="minLengthPassword"
         >
-          Max length is 6
+          Password minimum length is 6
         </div>
       </div>
     </div>
@@ -95,13 +95,13 @@
           *ngIf="signupForm.get('confirmPassword')?.errors?.['maxlength']"
           id="maxedPassword"
         >
-          Max length is 10
+          Password can't be more than 10
         </div>
         <div
           *ngIf="signupForm.get('confirmPassword')?.errors?.['minlength']"
           id="minLengthPassword"
         >
-          Max length is 6
+          Password minimum length is 6
         </div>
       </div>
     </div>

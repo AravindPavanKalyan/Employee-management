@@ -9,7 +9,7 @@
       <input
         type="email"
         class="form-control"
-        id="floatingInput"
+        id="loginEmailInput"
         placeholder="name@example.com"
         name="email"
         #email="ngModel"
@@ -30,7 +30,9 @@
       <input
         type="password"
         class="form-control"
-        id="floatingPassword"
+        id="loginPasswordInput"
+        minlength="6"
+        maxlength="12"
         placeholder="Password"
         name="password"
         #password="ngModel"

@@ -27,12 +27,12 @@ export class SignupComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
-        Validators.maxLength(10),
+        Validators.maxLength(12),
         Validators.minLength(6),
       ]), // step5  let's work on validations
       confirmPassword: new FormControl('', [
         Validators.required,
-        Validators.maxLength(10),
+        Validators.maxLength(12),
         Validators.minLength(6),
       ]),
       // for step3 refer html
@@ -43,22 +43,22 @@ export class SignupComponent implements OnInit {
     // 2. send the above form data to the service
     console.log('sent in auth comp', this.signupForm.value);
     this.authService.signupUser(this.signupForm.value).subscribe({
-      next: (res: IAuthentication) => {
+      next: (res: any) => {
         console.log('res in comp', res);
-        if (res.id) {
-          this.toastr.success('signup successful');
+        if (res.id && res.token) {
+          this.toastr.success('Signup successful');
+          this.signupForm.reset();
           this.navigationHelper.navigateTo('/auth/login');
         }
       },
       error: (error: any) => {
         console.log('error', error);
         this.toastr.error(
-          'Http failure response for https://reqres.in/api/register: 400 OK',
+          'Signup unsuccessful',
           'Error'
         );
       },
     });
-    this.signupForm.reset();
   }
 
 }

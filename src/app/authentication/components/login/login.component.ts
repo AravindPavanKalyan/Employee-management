@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { NavigationHelper } from 'src/app/shared/utils/navigation-helper';
 import { AuthService } from '../../services/auth.service';
@@ -17,11 +18,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  handleLogin(formData: any) {
+  handleLogin(formData: NgForm) {
     console.log('data from comp', formData.value); // submitted data
 
     this.authService.loginRequest(formData.value).subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         console.log('comp', res);
         if(res.token){
           console.log(res);
@@ -32,11 +33,10 @@ export class LoginComponent implements OnInit {
       error: (error: any) => {
         console.log('error in comp', error);
         this.toastr.error(
-          'Login failed',
+          'Email or password is incorrect'
         );
       },
     });
-
   }
 
 }

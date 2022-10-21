@@ -32,7 +32,7 @@ export class AuthService {
     return this.http.post(environment.loginRestApi, formData).pipe(
       map((res: any) => {
         // 3. get theres from the REST API
-        console.log('qwerty', res);
+        console.log('service res', res);
         // 4. send the res to the comp
         return res;
       }),
