@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NavigationHelper } from 'src/app/shared/utils/navigation-helper';
 import { AuthService } from '../../services/auth.service';
@@ -13,7 +14,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private toastr: ToastrService,
-    public navigationHelper: NavigationHelper
+    public navigationHelper: NavigationHelper,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {}
@@ -28,8 +31,11 @@ export class LoginComponent implements OnInit {
           console.log(res);
           // lets save the token in cookies/local storage/ session storages
           sessionStorage.setItem('authToken', res.token);
+          // post login redirect to the return url
+          const redirectTo = this.activatedRoute.snapshot.queryParams['redirectTo'];
           this.toastr.success('Login successful');
-          this.navigationHelper.navigateTo('/');
+          this.router.navigateByUrl(redirectTo);
+          // this.navigationHelper.navigateTo('/');
         }
       },
       error: (error: any) => {
