@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
         console.log('comp', res);
         if(res.token){
           console.log(res);
+          // lets save the token in cookiees as response of succes
+          sessionStorage.setItem('authToken', res.token);
           this.toastr.success('Login successful');
           this.navigationHelper.navigateTo('/');
         }

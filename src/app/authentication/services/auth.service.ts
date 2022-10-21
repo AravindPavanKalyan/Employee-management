@@ -41,4 +41,12 @@ export class AuthService {
       })
     );
   }
+
+  isAuth(): boolean{
+    if(sessionStorage.getItem('authToken')){
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
