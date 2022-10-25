@@ -13,7 +13,7 @@ export class UnitTestingDemoComponent implements OnInit {
   featureName!: string;
 
   constructor(private titleService: Title) {
-    titleService.setTitle('Unit Testing');
+    this.titleService.setTitle('Unit Testing');
   }
 
   ngOnInit(): void {

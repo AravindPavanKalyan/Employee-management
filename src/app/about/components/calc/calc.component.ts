@@ -12,7 +12,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class CalcComponent implements OnInit {
   constructor(private titleService: Title) {
-    titleService.setTitle('Calc Page')
+    this.titleService.setTitle('Calc Page')
 
   }
 

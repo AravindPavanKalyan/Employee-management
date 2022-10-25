@@ -17,7 +17,7 @@ export class ListEmployeesComponent implements OnInit, OnDestroy {
   employeesSubscription!: Subscription;
 
   constructor(private titleService: Title, private employeeService: EmployeeService) { 
-    titleService.setTitle('Employee Management');
+    this.titleService.setTitle('Employee Management');
     console.log('Inside Constructor')
   }
 

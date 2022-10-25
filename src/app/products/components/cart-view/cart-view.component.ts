@@ -16,7 +16,7 @@ export class CartViewComponent implements OnInit, OnDestroy {
   cartItemSubscription!: Subscription;
 
   constructor(private titleService: Title, private cartDataService: CartDataService) {
-    titleService.setTitle('Cart');
+    this.titleService.setTitle('Cart');
   }
 
   ngOnInit(): void {

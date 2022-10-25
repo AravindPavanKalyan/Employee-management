@@ -51,7 +51,7 @@ export class ConceptsComponent implements OnInit, AfterViewInit{
 
   // eslint-disable-next-line no-unused-vars
   constructor(private cd:ChangeDetectorRef, private titleService: Title) {
-    titleService.setTitle('Concepts');
+    this.titleService.setTitle('Concepts');
   }
 
   ngOnInit(): void {}

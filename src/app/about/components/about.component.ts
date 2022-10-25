@@ -12,7 +12,7 @@ export class AboutComponent implements OnInit {
   featureName: any = 'About Us';
 
   constructor(private titleService: Title) { 
-    titleService.setTitle('About Us');
+    this.titleService.setTitle('About Us');
   }
 
   ngOnInit(): void {

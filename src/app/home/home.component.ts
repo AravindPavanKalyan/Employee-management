@@ -14,7 +14,7 @@ import { Title } from '@angular/platform-browser';
 export class HomeComponent implements OnInit {
 
   constructor(private titleService: Title) { 
-    titleService.setTitle('Employee Management Home');
+    this.titleService.setTitle('Employee Management Home');
   }
 
   ngOnInit(): void {
