@@ -10,8 +10,8 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { UnitTestingDemoComponent } from './unit-testing-demo/components/unit-testing-demo/unit-testing-demo.component';
 
 const routes: Routes = [
-  {path: '', component : HomeComponent},
-  {path: 'concepts', component : ConceptsComponent},
+  {path: '', component : HomeComponent, canActivate: [ AuthGuard ]},
+  {path: 'concepts', component : ConceptsComponent, canActivate: [ AuthGuard ]},
   {path: 'about', component : AboutComponent, canActivate: [ AuthGuard ]},
   {path: 'unit-testing', component : UnitTestingDemoComponent, canActivate: [ AuthGuard ]},
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent}
