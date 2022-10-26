@@ -16,15 +16,38 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <app-menu>
           <li class="nav-item" menuComp>
-            <!-- <a class="nav-link" href="#">Login</a> -->
-            <a class="nav-link" routerLinkActive="active" routerLink="/auth/login">Login</a>
+            <a
+              class="nav-link"
+              routerLink="auth/login"
+              *ngIf="!this.authService.isAuth()"
+              routerLinkActive="active"
+              >Login</a
+            >
+            <a
+              class="nav-link"
+              routerLink="auth/login"
+              *ngIf="this.authService.isAuth()"
+              routerLinkActive="active"
+              (click)="handleLogout()"
+              >Logout</a
+            >
           </li>
           <li class="nav-item" menuComp>
-            <!-- <a class="nav-link" href="#">Signup</a> -->
-            <a class="nav-link" routerLinkActive="active" routerLink="/auth/signup">Signup</a>
+            <a
+              class="nav-link"
+              routerLink="auth/signup"
+              *ngIf="!this.authService.isAuth()"
+              routerLinkActive="active"
+              >Signup</a
+            >
           </li>
         </app-menu>
-        <button class="btn btn-danger"  (click)="navigationHelper.navigateTo('/products/cart')">Cart ({{cartItemsCount}})</button>
+        <button
+          class="btn btn-danger"
+          (click)="navigationHelper.navigateTo('/products/cart')"
+        >
+          Cart ({{ cartItemsCount }})
+        </button>
       </div>
     </div>
   </nav>

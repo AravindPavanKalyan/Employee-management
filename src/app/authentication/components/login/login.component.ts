@@ -28,11 +28,12 @@ export class LoginComponent implements OnInit {
       next: (res: any) => {
         console.log('comp', res);
         if(res.token){
-          console.log(res);
+          console.log('27', res);
           // lets save the token in cookies/local storage/ session storages
           sessionStorage.setItem('authToken', res.token);
           // post login redirect to the return url
           const redirectTo = this.activatedRoute.snapshot.queryParams['redirectTo'];
+          // console.log('redirectTo', redirectTo);
           this.toastr.success('Login successful');
           this.router.navigateByUrl(redirectTo);
         }
