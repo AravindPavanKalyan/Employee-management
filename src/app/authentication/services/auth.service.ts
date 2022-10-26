@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, map, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IAuthentication } from '../models/iauthentication';
 
@@ -9,14 +8,8 @@ import { IAuthentication } from '../models/iauthentication';
   providedIn: 'root',
 })
 export class AuthService {
-
-  // private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
-  // get isLoggedIn() {
-  //   return this.loggedIn.asObservable();
-  // }
   
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   signupUser(formData: IAuthentication) {
     console.log('received in auth service', formData);

@@ -89,7 +89,7 @@
           id="confirmPasswordReqErrMsg"
           *ngIf="signupForm.get('password')?.errors?.['required']"
         >
-          Password is required
+          Password confirmation is required
         </div>
         <div
           *ngIf="signupForm.get('confirmPassword')?.errors?.['maxlength']"

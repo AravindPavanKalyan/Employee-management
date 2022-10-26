@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { NavigationHelper } from 'src/app/shared/utils/navigation-helper';
-import { IAuthentication } from '../../models/iauthentication';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
