@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ToastrService,  ToastrModule} from 'ngx-toastr';
+import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { EmployeeService } from '../../services/employee.service';
 import { Router } from '@angular/router';
 
@@ -14,25 +14,25 @@ describe('AddEmployeeComponent', () => {
   let component: AddEmployeeComponent;
   let fixture: ComponentFixture<AddEmployeeComponent>;
   let service: EmployeeService;
-  let routerSpy = {navigate: jasmine.createSpy('navigate')};
+  let routerSpy = { navigate: jasmine.createSpy('navigate') };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddEmployeeComponent ],
-      imports:[
-        HttpClientModule, 
-        ToastrModule.forRoot(), 
+      declarations: [AddEmployeeComponent],
+      imports: [
+        HttpClientModule,
+        ToastrModule.forRoot(),
         RouterTestingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
       ],
       providers: [
-        {provide: ToastrService}, {
-          provide: EmployeeService
+        { provide: ToastrService },
+        {
+          provide: EmployeeService,
         },
-        { provide: Router, useValue: routerSpy }
-      ]
-    })
-      .compileComponents();
+        { provide: Router, useValue: routerSpy },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -44,7 +44,7 @@ describe('AddEmployeeComponent', () => {
 
   it('should navigate to /employees', () => {
     component.handleGoBack();
-    expect (routerSpy.navigate).toHaveBeenCalledWith(['/employees']);
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/employees']);
   });
 
   it('should create', () => {
@@ -86,7 +86,9 @@ describe('AddEmployeeComponent', () => {
 
     fixture.detectChanges(); // you must detect changes only then submit btn will be enabled
     spyOn(component, 'handleAddEmployee');
-    const submitBtn = fixture.debugElement.query(By.css('.submitBtn')).nativeElement;
+    const submitBtn = fixture.debugElement.query(
+      By.css('.submitBtn')
+    ).nativeElement;
     submitBtn.click();
     expect(component.handleAddEmployee).toHaveBeenCalled();
   });
@@ -100,7 +102,9 @@ describe('AddEmployeeComponent', () => {
 
     fixture.detectChanges(); // you must detect changes only then submit btn will be enabled
     spyOn(component, 'handleAddEmployee').and.callThrough();
-    const submitBtn = fixture.debugElement.query(By.css('.submitBtn')).nativeElement;
+    const submitBtn = fixture.debugElement.query(
+      By.css('.submitBtn')
+    ).nativeElement;
     submitBtn.click();
     expect(component.handleAddEmployee).toHaveBeenCalled();
 
@@ -108,13 +112,15 @@ describe('AddEmployeeComponent', () => {
       id: 1,
       name: 'Virat Kohli',
       phone: '24234234',
-      email: 'v@k.com'
-    }
+      email: 'v@k.com',
+    };
 
     spyOn(component.employeeService, 'createEmployee')
-      .withArgs(component.addEmployeeForm.value).and.returnValue(of(mockResponse));
+      .withArgs(component.addEmployeeForm.value)
+      .and.returnValue(of(mockResponse));
     console.log('spec1', component.addEmployeeForm);
-    component.employeeService.createEmployee(component.addEmployeeForm.value)
+    component.employeeService
+      .createEmployee(component.addEmployeeForm.value)
       .subscribe({
         next: (res) => {
           expect(res).toEqual(mockResponse);
@@ -123,103 +129,124 @@ describe('AddEmployeeComponent', () => {
         error: () => {
           console.log('SOME ERROR OCCURED.');
           done();
-        }
-      })
-
+        },
+      });
   });
 
   // todo2: have the form data as null and test form submission logic using spy
   it('should return error when form data is null', () => {
     spyOn(component.employeeService, 'createEmployee')
-      .withArgs(component.addEmployeeForm.value).and.throwError('404');
-    console.log('component.addEmployeeForm.value', component.addEmployeeForm.value);
-      
+      .withArgs(component.addEmployeeForm.value)
+      .and.throwError('404');
+    console.log(
+      'component.addEmployeeForm.value',
+      component.addEmployeeForm.value
+    );
+
     expect(function () {
-      component.employeeService.createEmployee(component.addEmployeeForm.value)
-    }).toThrow(new Error('404'))
+      component.employeeService.createEmployee(component.addEmployeeForm.value);
+    }).toThrow(new Error('404'));
   });
 
   it('should call handleAddEmployee when submit btn clicked -- all thru [html]', () => {
     // find the input
-    const nameInput: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#nameInput');
+    const nameInput: HTMLInputElement =
+      fixture.debugElement.nativeElement.querySelector('#nameInput');
     //set value in put
     nameInput.value = 'john';
     // trigger the input event inn all input field
     nameInput.dispatchEvent(new Event('input'));
-    
-    const phoneInput: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#phoneInput');
+
+    const phoneInput: HTMLInputElement =
+      fixture.debugElement.nativeElement.querySelector('#phoneInput');
     phoneInput.value = '12345678';
     phoneInput.dispatchEvent(new Event('input'));
-    
-    const emailInput: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#emailInput');
+
+    const emailInput: HTMLInputElement =
+      fixture.debugElement.nativeElement.querySelector('#emailInput');
     emailInput.value = 'john@hjih.com';
     emailInput.dispatchEvent(new Event('input'));
 
     fixture.detectChanges();
 
     spyOn(component, 'handleAddEmployee');
-    const submitBtn = fixture.debugElement.query(By.css('.submitBtn')).nativeElement;
+    const submitBtn = fixture.debugElement.query(
+      By.css('.submitBtn')
+    ).nativeElement;
     submitBtn.click(); // we can click only if buttons become enabled -- for that we need valid inputs
     expect(component.handleAddEmployee).toHaveBeenCalled();
   });
 
   it('should not call errors when valid fields -- all thru [html]', () => {
     // find the input
-    const nameInput: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#nameInput');
+    const nameInput: HTMLInputElement =
+      fixture.debugElement.nativeElement.querySelector('#nameInput');
     //set value in put
     nameInput.value = 'john';
     // trigger the input event inn all input field
     nameInput.dispatchEvent(new Event('input'));
-    
-    const phoneInput: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#phoneInput');
+
+    const phoneInput: HTMLInputElement =
+      fixture.debugElement.nativeElement.querySelector('#phoneInput');
     phoneInput.value = '12345678';
     phoneInput.dispatchEvent(new Event('input'));
-    
-    const emailInput: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#emailInput');
+
+    const emailInput: HTMLInputElement =
+      fixture.debugElement.nativeElement.querySelector('#emailInput');
     emailInput.value = 'john@hjih.com';
     emailInput.dispatchEvent(new Event('input'));
 
     fixture.detectChanges();
 
-    const nameRequiredEl = fixture.debugElement.nativeElement.querySelector('#nameRequired');
+    const nameRequiredEl =
+      fixture.debugElement.nativeElement.querySelector('#nameRequired');
     expect(nameRequiredEl).toBeFalsy();
 
-    const phoeRequiredEl = fixture.debugElement.nativeElement.querySelector('#phoneRequired');
+    const phoeRequiredEl =
+      fixture.debugElement.nativeElement.querySelector('#phoneRequired');
     expect(phoeRequiredEl).toBeFalsy();
 
-    const maxedPhoneEl = fixture.debugElement.nativeElement.querySelector('#maxedPhone');
+    const maxedPhoneEl =
+      fixture.debugElement.nativeElement.querySelector('#maxedPhone');
     expect(maxedPhoneEl).toBeFalsy();
 
-    const insufficientPhoneEl = fixture.debugElement.nativeElement.querySelector('#insufficientPhoneEl');
+    const insufficientPhoneEl =
+      fixture.debugElement.nativeElement.querySelector('#insufficientPhoneEl');
     expect(insufficientPhoneEl).toBeFalsy();
 
-    const emailRequiredEl = fixture.debugElement.nativeElement.querySelector('#emailRequired');
+    const emailRequiredEl =
+      fixture.debugElement.nativeElement.querySelector('#emailRequired');
     expect(emailRequiredEl).toBeFalsy();
 
-    const invalidEmailEl = fixture.debugElement.nativeElement.querySelector('#invalidEmail');
+    const invalidEmailEl =
+      fixture.debugElement.nativeElement.querySelector('#invalidEmail');
     expect(invalidEmailEl).toBeFalsy();
   });
 
   it('empty name fields req invalid error truthy-- all thru [html]', () => {
-    const nameInput: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#nameInput');
+    const nameInput: HTMLInputElement =
+      fixture.debugElement.nativeElement.querySelector('#nameInput');
     nameInput.value = '';
     nameInput.dispatchEvent(new Event('input'));
 
     fixture.detectChanges();
 
-    const nameRequiredEl = fixture.debugElement.nativeElement.querySelector('#nameReqErrMsg');
+    const nameRequiredEl =
+      fixture.debugElement.nativeElement.querySelector('#nameReqErrMsg');
     expect(nameRequiredEl.innerText).toBe('Name is required');
     expect(nameRequiredEl).toBeTruthy();
   });
 
   it('empty, min length, max length -  phone fields req invalid error truthy-- all thru [html]', () => {
-    const phoneInput: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#phoneInput');
+    const phoneInput: HTMLInputElement =
+      fixture.debugElement.nativeElement.querySelector('#phoneInput');
     phoneInput.value = '';
     phoneInput.dispatchEvent(new Event('input'));
 
     fixture.detectChanges();
 
-    const phoneRequiredEl = fixture.debugElement.nativeElement.querySelector('#phoneReqErrMsg');
+    const phoneRequiredEl =
+      fixture.debugElement.nativeElement.querySelector('#phoneReqErrMsg');
     expect(phoneRequiredEl.innerText).toBe('Phone is required');
     expect(phoneRequiredEl).toBeTruthy();
 
@@ -228,29 +255,32 @@ describe('AddEmployeeComponent', () => {
 
     fixture.detectChanges();
 
-    const phoneMinErrMsgEl = fixture.debugElement.nativeElement.querySelector('#insufficientPhone');
+    const phoneMinErrMsgEl =
+      fixture.debugElement.nativeElement.querySelector('#insufficientPhone');
     expect(phoneMinErrMsgEl.innerText).toBe('Min length is 7');
     expect(phoneMinErrMsgEl).toBeTruthy();
-
 
     phoneInput.value = '12345123456789';
     phoneInput.dispatchEvent(new Event('input'));
 
     fixture.detectChanges();
 
-    const phoneMaxErrMsgEl = fixture.debugElement.nativeElement.querySelector('#maxedPhone');
+    const phoneMaxErrMsgEl =
+      fixture.debugElement.nativeElement.querySelector('#maxedPhone');
     expect(phoneMaxErrMsgEl.innerText).toBe('Max length is 10');
     expect(phoneMaxErrMsgEl).toBeTruthy();
   });
 
   it('empty, invalid -  email fields req invalid error truthy-- all thru [html]', () => {
-    const emailInput: HTMLInputElement = fixture.debugElement.nativeElement.querySelector('#emailInput');
+    const emailInput: HTMLInputElement =
+      fixture.debugElement.nativeElement.querySelector('#emailInput');
     emailInput.value = '';
     emailInput.dispatchEvent(new Event('input'));
 
     fixture.detectChanges();
 
-    const emailRequiredEl = fixture.debugElement.nativeElement.querySelector('#emailReqErrMsg');
+    const emailRequiredEl =
+      fixture.debugElement.nativeElement.querySelector('#emailReqErrMsg');
     expect(emailRequiredEl.innerText).toBe('Email is required');
     expect(emailRequiredEl).toBeTruthy();
 
@@ -258,9 +288,9 @@ describe('AddEmployeeComponent', () => {
     emailInput.dispatchEvent(new Event('input'));
 
     fixture.detectChanges();
-    const emailInvalidEl = fixture.debugElement.nativeElement.querySelector('#invalidEmail');
+    const emailInvalidEl =
+      fixture.debugElement.nativeElement.querySelector('#invalidEmail');
     expect(emailInvalidEl.innerText).toBe('Email seems to be not valid');
     expect(emailInvalidEl).toBeTruthy();
   });
-
 });

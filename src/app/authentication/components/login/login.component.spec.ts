@@ -13,23 +13,22 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
-      imports:[
+      declarations: [LoginComponent],
+      imports: [
         HttpClientModule,
-        ToastrModule.forRoot(), 
+        ToastrModule.forRoot(),
         RouterTestingModule,
-        FormsModule
+        FormsModule,
       ],
       providers: [
         {
-          provide: AuthService
+          provide: AuthService,
         },
         {
-          provide: ToastrService
-        }
-      ]
-    })
-      .compileComponents();
+          provide: ToastrService,
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,42 +1,56 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { CebComponent } from './ceb/ceb.component';
 
 @Component({
   selector: 'app-concepts',
   templateUrl: './concepts.component.html',
-  styles: []
+  styles: [],
 })
-export class ConceptsComponent implements OnInit, AfterViewInit{
-
+export class ConceptsComponent implements OnInit, AfterViewInit {
   // public variable
 
   //directives
   isLoggedIn = false;
 
   //*ngFor
-  skills: any = ['HTML', 'CSS', 'Js', 'ng', 'NodeJS']
+  skills: any = ['HTML', 'CSS', 'Js', 'ng', 'NodeJS'];
 
   //*ngSwitch
-  dayOfWeek:any = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+  dayOfWeek: any = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday',
+  ];
 
   // view child related
-  @ViewChild(CebComponent, {static:false}) child!:CebComponent
-  
+  @ViewChild(CebComponent, { static: false }) child!: CebComponent;
+
   // view_child related
   viewChildData: any;
-  
+
   //interpolation
   appName = 'Employee Manager App!';
   companyProfile = {
     name: 'Cognizant',
-    employeesCount: 341000
+    employeesCount: 341000,
   };
 
   //pipes
-  dummyText = 'Thanks for joining the session. warm welcome to Learning and Development team';
+  dummyText =
+    'Thanks for joining the session. warm welcome to Learning and Development team';
   today: Date = new Date();
- 
+
   //Custom Property binding related
   myAge = 32;
 
@@ -50,14 +64,14 @@ export class ConceptsComponent implements OnInit, AfterViewInit{
   courseName = 'angular';
 
   // eslint-disable-next-line no-unused-vars
-  constructor(private cd:ChangeDetectorRef, private titleService: Title) {
+  constructor(private cd: ChangeDetectorRef, private titleService: Title) {
     this.titleService.setTitle('Concepts');
   }
 
   ngOnInit(): void {}
 
   //view_child related
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     console.log(this.child.profile);
     this.viewChildData = this.child.profile;
     this.cd.detectChanges();
@@ -71,10 +85,10 @@ export class ConceptsComponent implements OnInit, AfterViewInit{
     element.innerText = 'clicked';
   }
 
-  //Step 6: event handler of the custom event 
-  handleProfileLoaded(event: any){ // Step 7: we receive the data thru event
+  //Step 6: event handler of the custom event
+  handleProfileLoaded(event: any) {
+    // Step 7: we receive the data thru event
     console.log(event);
     this.dataReceivedFromChildComp = event;
   }
-
 }

@@ -11,13 +11,9 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent, MenuComponent ],
-      imports: [
-        RouterTestingModule,
-        HttpClientModule
-      ]
-    })
-      .compileComponents();
+      declarations: [HeaderComponent, MenuComponent],
+      imports: [RouterTestingModule, HttpClientModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

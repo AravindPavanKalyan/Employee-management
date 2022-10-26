@@ -10,12 +10,9 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FooterComponent, MenuComponent ],
-      imports: [
-        RouterTestingModule
-      ]
-    })
-      .compileComponents();
+      declarations: [FooterComponent, MenuComponent],
+      imports: [RouterTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

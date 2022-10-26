@@ -3,21 +3,13 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
-  template: `
-    <p>
-      home works!
-    </p>
-  `,
-  styles: [
-  ]
+  template: ' <p>home works!</p>s ',
+  styles: [],
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private titleService: Title) { 
+  constructor(private titleService: Title) {
     this.titleService.setTitle('Employee Management Home');
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

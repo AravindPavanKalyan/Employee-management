@@ -6,13 +6,17 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { ProductsListComponent } from './components/products-list/products-list.component';
 
 const routes: Routes = [
-  {path: 'products', component: ProductsListComponent, canActivate: [ AuthGuard ]},
-  {path: 'products/cart', component: CartViewComponent},
-  {path: 'products/:id', component: ProductDetailsComponent}
+  {
+    path: 'products',
+    component: ProductsListComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'products/cart', component: CartViewComponent },
+  { path: 'products/:id', component: ProductDetailsComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ProductsRoutingModule { }
+export class ProductsRoutingModule {}

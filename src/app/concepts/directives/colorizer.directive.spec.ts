@@ -1,13 +1,9 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ColorizerDirective } from './colorizer.directive';
 
 @Component({
-  template: `
-  <div appColorizer>
-    colorizer directive testing
-</div>
-  `
+  template: ' <div appColorizer>colorizer directive testing</div> ',
 })
 class MockComponent {} // No need to export as we will use this component her itself
 
@@ -15,16 +11,12 @@ describe('ColorizerDirective', () => {
   let fixture: ComponentFixture<MockComponent>;
 
   //step 2.1 preparing Mockcomponent for testing - loading it into the testing
-  beforeEach( () => {
+  beforeEach(() => {
     fixture = TestBed.configureTestingModule({
-      declarations: [
-        MockComponent,
-        ColorizerDirective
-      ]
+      declarations: [MockComponent, ColorizerDirective],
     }).createComponent(MockComponent);
 
     fixture.detectChanges(); // detecting the changes in html of mockcomp
-    
   });
 
   it('should have a <div> with background color red, colour rgb(255, 255, 255), height 100px and padding 20px', () => {
@@ -57,5 +49,4 @@ describe('ColorizerDirective', () => {
     const pElTextContent = pEl.textContent;
     expect(pElTextContent).toBe('Powered By Colorizer Directive');
   });
-
 });

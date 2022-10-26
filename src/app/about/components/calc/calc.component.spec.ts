@@ -8,9 +8,8 @@ describe('CalcComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalcComponent ]
-    })
-      .compileComponents();
+      declarations: [CalcComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -41,5 +40,4 @@ describe('CalcComponent', () => {
     expect(component.add(75, 7)).not.toBeUndefined();
     expect(component.add(1, 99)).not.toBeTrue();
   });
-  
 });

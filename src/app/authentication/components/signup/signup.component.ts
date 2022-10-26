@@ -52,12 +52,8 @@ export class SignupComponent implements OnInit {
       },
       error: (error: any) => {
         console.log('error', error);
-        this.toastr.error(
-          'Signup unsuccessful',
-          'Error'
-        );
+        this.toastr.error('Signup unsuccessful', 'Error');
       },
     });
   }
-
 }

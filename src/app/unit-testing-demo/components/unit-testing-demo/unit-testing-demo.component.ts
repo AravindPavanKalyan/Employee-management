@@ -4,12 +4,9 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-unit-testing-demo',
   templateUrl: './unit-testing-demo.component.html',
-  styles: [
-    
-  ]
+  styles: [],
 })
 export class UnitTestingDemoComponent implements OnInit {
-
   featureName!: string;
 
   constructor(private titleService: Title) {
@@ -21,5 +18,4 @@ export class UnitTestingDemoComponent implements OnInit {
       this.featureName = 'Testing the ngOnInit with fakeAsync and tick';
     }, 2000);
   }
-
 }

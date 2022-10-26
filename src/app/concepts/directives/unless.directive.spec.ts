@@ -9,5 +9,4 @@ describe('UnlessDirective', () => {
     const directive = new UnlessDirective(ViewContainerRef, templateRef);
     expect(directive).toBeTruthy();
   });
-
 });

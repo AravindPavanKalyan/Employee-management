@@ -13,9 +13,7 @@ describe('EmployeeService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientModule
-      ]
+      imports: [HttpClientModule],
     });
     service = TestBed.inject(EmployeeService);
   });
@@ -33,28 +31,30 @@ describe('EmployeeService', () => {
   // testing getEmployees method only
   it('should return employees when called [HTTP SPY]', (done: DoneFn) => {
     // mock data for employees
-    const mockEmployees = [{
-      id: 1,
-      name: 'Virat Kohli',
-      email: 'v@k.com',
-      phone: '1-770-736-803'
-    }, {
-      id: 1,
-      name: 'Steve Smith',
-      email: 's@s.com',
-      phone: '010-692-6599'
-    }];
+    const mockEmployees = [
+      {
+        id: 1,
+        name: 'Virat Kohli',
+        email: 'v@k.com',
+        phone: '1-770-736-803',
+      },
+      {
+        id: 1,
+        name: 'Steve Smith',
+        email: 's@s.com',
+        phone: '010-692-6599',
+      },
+    ];
 
     httpClientSpy.get.and.returnValue(of(mockEmployees));
 
-    service.getEmployees()
-      .subscribe({
-        next: (res: any) => {
-          expect(res).toEqual(mockEmployees);
-          done();
-        },
-        error: done.fail
-      })
+    service.getEmployees().subscribe({
+      next: (res: any) => {
+        expect(res).toEqual(mockEmployees);
+        done();
+      },
+      error: done.fail,
+    });
   });
 
   // testing createEmployees method only
@@ -63,26 +63,26 @@ describe('EmployeeService', () => {
     const mockEmployee = {
       name: 'Virat Kohli',
       email: 'v@k.com',
-      phone: '1-770-736-803'
+      phone: '1-770-736-803',
     };
 
     const mockEmployeeResponse = {
       id: 1,
       name: 'Virat Kohli',
       email: 'v@k.com',
-      phone: '1-770-736-803'
+      phone: '1-770-736-803',
     };
 
-    httpClientSpy.post.withArgs(environment.employeeRestApi, mockEmployee).and.returnValue(of(mockEmployeeResponse));
+    httpClientSpy.post
+      .withArgs(environment.employeeRestApi, mockEmployee)
+      .and.returnValue(of(mockEmployeeResponse));
 
-    service.createEmployee(mockEmployee)
-      .subscribe({
-        next: (res: any) => {
-          expect(res).toEqual(mockEmployeeResponse);
-          done();
-        },
-        error: done.fail
-      })
+    service.createEmployee(mockEmployee).subscribe({
+      next: (res: any) => {
+        expect(res).toEqual(mockEmployeeResponse);
+        done();
+      },
+      error: done.fail,
+    });
   });
-
 });

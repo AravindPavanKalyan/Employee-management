@@ -4,35 +4,32 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   selector: 'app-ceb',
   template: `
     <div>
-     <p>Let's send data to the parent component</p>
-     <button (click)='handleSendDataToParent()'>Send Data to Parent Component</button><br/>
+      <p>Let's send data to the parent component</p>
+      <button (click)="handleSendDataToParent()">
+        Send Data to Parent Component</button
+      ><br />
     </div>
   `,
-  styles: [
-  ]
+  styles: [],
 })
 export class CebComponent implements OnInit {
-
   // Step 1: Let's work on to define a custom event
-  // Step 1.1 Let's have an obj of EventEmitter class 
+  // Step 1.1 Let's have an obj of EventEmitter class
   @Output() profileLoaded = new EventEmitter(); // Step 1.2 Let's make it a custom event by using @Output()
-  
+
   // Step 2: Let's have the data to send to parent comp
   profile = {
-    name:'steve',
-    city:'London'
-  }
+    name: 'steve',
+    city: 'London',
+  };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   // Step 3: Let's Emit/Trigger the custom event thru program
   // along with it let's send the data to parent comp
-  handleSendDataToParent(){
-    console.log('will send soon'),
-    this.profileLoaded.emit(this.profile); // For step 4: Refer concepts.comp.html
+  handleSendDataToParent() {
+    console.log('will send soon'), this.profileLoaded.emit(this.profile); // For step 4: Refer concepts.comp.html
   }
-
 }

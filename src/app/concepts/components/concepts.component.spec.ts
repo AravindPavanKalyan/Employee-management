@@ -17,33 +17,33 @@ describe('ConceptsComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [
         ConceptsComponent,
-        CebComponent, 
-        CpbComponent, 
-        ColorizerDirective, 
+        CebComponent,
+        CpbComponent,
+        ColorizerDirective,
         UnlessDirective,
         DemoIfDirective,
-        EllipsisPipe
+        EllipsisPipe,
       ],
-      imports: [
-        FormsModule
-      ]
-    })
-      .compileComponents();
+      imports: [FormsModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ConceptsComponent);
     component = fixture.componentInstance;
-    component.child = TestBed.createComponent(CebComponent).componentInstance as CebComponent;
+    component.child = TestBed.createComponent(CebComponent)
+      .componentInstance as CebComponent;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
+
   it('should have a <div> with background color red, colour rgb(255, 255, 255), height 100px and padding 20px', () => {
-    const divElement: HTMLElement = fixture.nativeElement.querySelector('[data-testid="colorizerEls"]');
+    const divElement: HTMLElement = fixture.nativeElement.querySelector(
+      '[data-testid="colorizerEls"]'
+    );
     // console.log(divElement);
     const divElementBgColor = divElement.style.backgroundColor;
     expect(divElementBgColor).toBe('red');
@@ -56,14 +56,18 @@ describe('ConceptsComponent', () => {
   });
 
   it('should have a <p> inside <div>', () => {
-    const divElement: HTMLElement = fixture.nativeElement.querySelector('[data-testid="colorizerEls"]');
+    const divElement: HTMLElement = fixture.nativeElement.querySelector(
+      '[data-testid="colorizerEls"]'
+    );
     const pEl = divElement.querySelector('p');
     console.log('prop p', pEl);
     expect(pEl).toBeTruthy();
   });
 
   it('should have <p> with textContent-Powered By Colorizer Directive', () => {
-    const divElement: HTMLElement = fixture.nativeElement.querySelector('[data-testid="colorizerEls"]');
+    const divElement: HTMLElement = fixture.nativeElement.querySelector(
+      '[data-testid="colorizerEls"]'
+    );
     const pEl = divElement.querySelector('p');
     const pElTextContent = pEl?.textContent;
     // console.log('qwerty', pEl);
@@ -74,7 +78,9 @@ describe('ConceptsComponent', () => {
   });
 
   it('should have <p> with float-right, fontSize-10px', () => {
-    const divElement: HTMLElement = fixture.nativeElement.querySelector('[data-testid="colorizerEls"]');
+    const divElement: HTMLElement = fixture.nativeElement.querySelector(
+      '[data-testid="colorizerEls"]'
+    );
     // console.log('divElement', divElement.querySelector('p'));
     const pEl = divElement.querySelector('p');
     // console.log('pEl?.style', pEl?.style);
@@ -83,6 +89,4 @@ describe('ConceptsComponent', () => {
     const pElFontSize = pEl?.style.fontSize;
     expect(pElFontSize).toBe('10px');
   });
-
-
 });

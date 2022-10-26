@@ -1,4 +1,9 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 
 import { UnitTestingDemoComponent } from './unit-testing-demo.component';
 import { CounterComponent } from '../counter/counter.component';
@@ -13,10 +18,9 @@ describe('UnitTestingDemoComponent', () => {
       declarations: [
         UnitTestingDemoComponent,
         CounterComponent,
-        HighlightDirective
-      ]
-    })
-      .compileComponents();
+        HighlightDirective,
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -36,7 +40,9 @@ describe('UnitTestingDemoComponent', () => {
   // });
 
   it('should have skyblue <div>', () => {
-    const highlightWrapperEl: HTMLElement = fixture.nativeElement.querySelector('[data-testid="highlightWrapper"]');
+    const highlightWrapperEl: HTMLElement = fixture.nativeElement.querySelector(
+      '[data-testid="highlightWrapper"]'
+    );
     console.log(highlightWrapperEl);
     const bgColor = highlightWrapperEl.style.backgroundColor;
     expect(bgColor).toBe('skyblue');
@@ -46,17 +52,19 @@ describe('UnitTestingDemoComponent', () => {
   it('has featureName as "Listing Employess" [approach #1]', fakeAsync(() => {
     component.ngOnInit();
     tick(2001);
-    expect(component.featureName).toEqual('Testing the ngOnInit with fakeAsync and tick')
+    expect(component.featureName).toEqual(
+      'Testing the ngOnInit with fakeAsync and tick'
+    );
   }));
 
   // approach #2 using timeout
-  it('has featureName with proper text [approach #2]', ((done) => {
+  it('has featureName with proper text [approach #2]', (done) => {
     component.ngOnInit();
-    setTimeout( () => {
-      expect(component.featureName).toEqual('Testing the ngOnInit with fakeAsync and tick')
+    setTimeout(() => {
+      expect(component.featureName).toEqual(
+        'Testing the ngOnInit with fakeAsync and tick'
+      );
       done();
     }, 2001);
-  
-  }));
-
+  });
 });

@@ -3,17 +3,19 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
   constructor() {}
 
   // will intercept all the sebsequent requests that hit the REST API (post - login)
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
     console.log(request); // original http request
 
     //ideal is to update http req header with bearer token
@@ -24,11 +26,10 @@ export class AuthInterceptor implements HttpInterceptor {
     // now, let's manipulate the req header with the above authToken as bearer token
     request = request.clone({
       setHeaders: {
-        authorization: `Bearer ${authToken}`
-      }
+        authorization: `Bearer ${authToken}`,
+      },
     });
-    
-    
+
     return next.handle(request);
   }
 }

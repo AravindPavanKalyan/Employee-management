@@ -10,7 +10,6 @@ describe('ListEmployeesComponent', () => {
   let fixture: ComponentFixture<ListEmployeesComponent>;
   let employeeService: EmployeeService;
 
-
   //steps for mocking
   //1. have the mock data of array with mn 2 objects
   //2. prepare for mocking a service's API method
@@ -18,34 +17,34 @@ describe('ListEmployeesComponent', () => {
   //  2.2 what API method to mock? getEmployee()
   //3. provide the mock data for the service request
 
-  const mockEmployeeList = [{
-    id: 1,
-    name: 'Virat Kohli',
-    email: 'v@k.com',
-    phone: '1-770-736-803'
-  }, {
-    id: 2,
-    name: 'Steve Smith',
-    email: 's@s.com',
-    phone: '010-692-6599'
-  }];
+  const mockEmployeeList = [
+    {
+      id: 1,
+      name: 'Virat Kohli',
+      email: 'v@k.com',
+      phone: '1-770-736-803',
+    },
+    {
+      id: 2,
+      name: 'Steve Smith',
+      email: 's@s.com',
+      phone: '010-692-6599',
+    },
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListEmployeesComponent ],
-      imports:[
-        HttpClientModule
-      ],
+      declarations: [ListEmployeesComponent],
+      imports: [HttpClientModule],
       providers: [
         {
           provide: EmployeeService,
           useValue: {
-            getEmployees: () => of(mockEmployeeList)
-          }
-        }
-      ]
-    })
-      .compileComponents();
+            getEmployees: () => of(mockEmployeeList),
+          },
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -66,7 +65,7 @@ describe('ListEmployeesComponent', () => {
   //   setTimeout( () => {
   //     expect(component.employees.length).toEqual(10)
   //     done();
-  //   }, 4000); 
+  //   }, 4000);
   // }));
 
   // it('shoulld render employee named "Leanne Graham"', ((done) => {
@@ -76,7 +75,7 @@ describe('ListEmployeesComponent', () => {
   //     console.log(fixture.nativeElement.querySelector('h5'));
   //     expect(fixture.nativeElement.querySelector('h5').innerText).toBe('Leanne Graham');
   //     done();
-  //   }, 4000); 
+  //   }, 4000);
   // }));
 
   // Challenges/Disadvantages of Testing Direct API Request like the above
@@ -92,11 +91,12 @@ describe('ListEmployeesComponent', () => {
   it('shoulld render employee named "Virat Kohli"', () => {
     component.ngOnInit();
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('h5').innerText).toBe('Virat Kohli');
+    expect(fixture.nativeElement.querySelector('h5').innerText).toBe(
+      'Virat Kohli'
+    );
   });
 
   it('should have employees from service -- [MOCKING API]', () => {
     expect(component.employees).toEqual(mockEmployeeList);
   });
-
 });

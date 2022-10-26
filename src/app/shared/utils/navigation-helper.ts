@@ -2,15 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NavigationHelper {
-  constructor(private router: Router){
+  constructor(private router: Router) {}
 
-  }
-
-  navigateTo(url: string){
+  navigateTo(url: string) {
     this.router.navigateByUrl(url);
   }
-
 }

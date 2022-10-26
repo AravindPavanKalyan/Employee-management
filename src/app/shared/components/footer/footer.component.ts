@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-footer',
   template: `
-   <footer class="text-center">
-      <hr>
+    <footer class="text-center">
+      <hr />
       <app-menu>
         <li class="nav-item" #backToTop>
           <a class="nav-link" href="#">Back to Top</a>
@@ -13,14 +13,10 @@ import { Component, OnInit } from '@angular/core';
       <p>Copyright 2022 | Kalyan</p>
     </footer>
   `,
-  styles: [
-  ]
+  styles: [],
 })
 export class FooterComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

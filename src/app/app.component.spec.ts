@@ -9,16 +9,13 @@ import { MenuComponent } from './shared/components/menu/menu.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        HttpClientModule
-      ],
+      imports: [RouterTestingModule, HttpClientModule],
       declarations: [
         AppComponent,
         HeaderComponent,
         FooterComponent,
-        MenuComponent
-      ]
+        MenuComponent,
+      ],
     }).compileComponents();
   });
 

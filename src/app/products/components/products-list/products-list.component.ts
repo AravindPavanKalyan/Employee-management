@@ -7,14 +7,16 @@ import { ProductsService } from '../../services/products.service';
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class ProductsListComponent implements OnInit {
-
   productList: IProduct[] = [];
 
-  constructor(private titleService: Title, private productService: ProductsService, private cartDataService: CartDataService) {
+  constructor(
+    private titleService: Title,
+    private productService: ProductsService,
+    private cartDataService: CartDataService
+  ) {
     this.titleService.setTitle('Products');
   }
 
@@ -27,5 +29,4 @@ export class ProductsListComponent implements OnInit {
     console.log('product', product);
     this.cartDataService.addToCartItems(product);
   }
-
 }

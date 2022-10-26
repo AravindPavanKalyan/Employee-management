@@ -10,7 +10,7 @@ describe('CounterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CounterComponent]
+      declarations: [CounterComponent],
     }).compileComponents();
   });
 
@@ -80,7 +80,9 @@ describe('CounterComponent', () => {
     expect(component.counterValue).toEqual(10);
     fixture.detectChanges();
     const counterMessage = fixture.nativeElement as HTMLElement;
-    expect(counterMessage.querySelector('p.counterMessage')?.textContent).toBe('Maximum counter value reached');
+    expect(counterMessage.querySelector('p.counterMessage')?.textContent).toBe(
+      'Maximum counter value reached'
+    );
   });
 
   it('should stop at 0 and show mimimum counter value reached upon decrement', () => {
@@ -92,33 +94,38 @@ describe('CounterComponent', () => {
     fixture.detectChanges();
     // const counterMessage = fixture.nativeElement as HTMLElement;
     // expect(counterMessage.querySelector('p.counterMessage')?.textContent).toBe('Minimum counter value reached');
-    const counterMessage = fixture.debugElement.query(By.css('p.counterMessage')).nativeElement.innerText;
+    const counterMessage = fixture.debugElement.query(
+      By.css('p.counterMessage')
+    ).nativeElement.innerText;
     expect(counterMessage).toBe('Minimum counter value reached');
   });
 
   //Increment and decrement button names
   it('should match button labels tp "Decrement" and "Increment"', () => {
     const counterComponentHTML = fixture.nativeElement as HTMLElement;
-    expect(counterComponentHTML.querySelector('button.incrementBtn')?.textContent).toBe('Increment');
-    expect(counterComponentHTML.querySelector('button.decrementBtn')?.textContent).toBe('Decrement');
+    expect(
+      counterComponentHTML.querySelector('button.incrementBtn')?.textContent
+    ).toBe('Increment');
+    expect(
+      counterComponentHTML.querySelector('button.decrementBtn')?.textContent
+    ).toBe('Decrement');
   });
 
   // testing inline styles of html
-  it('should have red bg color in h2 element', () =>{
+  it('should have red bg color in h2 element', () => {
     const bgColor = wrapper.querySelector('h2')?.style.backgroundColor;
-    expect(bgColor).toBe('rgb(255, 0, 0)') //not recommended to use the exact color name like 'red', 'blue'
+    expect(bgColor).toBe('rgb(255, 0, 0)'); //not recommended to use the exact color name like 'red', 'blue'
   });
 
   //testing whether the button elements have button class 'btn'
-  it('should have button class "btn" to the button elements', () =>{
-    const btnHTML=wrapper.querySelector('.incrementBtn')
-    expect(btnHTML).toHaveClass('btn')
+  it('should have button class "btn" to the button elements', () => {
+    const btnHTML = wrapper.querySelector('.incrementBtn');
+    expect(btnHTML).toHaveClass('btn');
   });
 
-  it('ngOnInit', () =>{
+  it('ngOnInit', () => {
     spyOn(component, 'ngOnInit').and.callThrough();
     component.ngOnInit();
     expect(component.ngOnInit).toHaveBeenCalled();
   });
-
 });

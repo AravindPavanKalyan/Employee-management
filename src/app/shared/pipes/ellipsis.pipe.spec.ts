@@ -25,5 +25,4 @@ describe('EllipsisPipe', () => {
     console.log('transformedText', transformedText);
     expect(transformedText).toBe('Inalid or empty value');
   });
-
 });

@@ -1,16 +1,21 @@
-import { Directive, ElementRef, HostListener, HostBinding, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  HostBinding,
+  Renderer2,
+} from '@angular/core';
 
 // Decorator
 @Directive({
-  selector: '[appColorizer]' // attribute selector
+  selector: '[appColorizer]', // attribute selector
 })
-export class ColorizerDirective{
-
-  divEl: any; 
+export class ColorizerDirective {
+  divEl: any;
 
   @HostBinding('style.border') border!: string;
 
-  constructor( private elRef: ElementRef, private renderer: Renderer2) { 
+  constructor(private elRef: ElementRef, private renderer: Renderer2) {
     console.log('Inside Constructor');
 
     // find an element in which the directive is used
@@ -31,14 +36,16 @@ export class ColorizerDirective{
 
     const newPara = this.renderer.createElement('p'); // <p></p>
     renderer.setStyle(newPara, 'float', 'right'); // <p style='float:left'></p>
-    renderer.setStyle(newPara, 'font-size', '10px');// <p style='float:left; font-size:10px'></p>
-    const poweredByText = this.renderer.createText('Powered By Colorizer Directive');// Powered By Colorizer Directive
+    renderer.setStyle(newPara, 'font-size', '10px'); // <p style='float:left; font-size:10px'></p>
+    const poweredByText = this.renderer.createText(
+      'Powered By Colorizer Directive'
+    ); // Powered By Colorizer Directive
     renderer.appendChild(newPara, poweredByText); // <p style='float:left; font-size:10px'>Powered By Colorizer Directive</p>
     renderer.appendChild(this.divEl, newPara);
   }
 
-  // Handle Events inside Directive -- click, mouseover, mouseout 
-  @HostListener('click', ['$event.target']) 
+  // Handle Events inside Directive -- click, mouseover, mouseout
+  @HostListener('click', ['$event.target'])
   handleClick(targetEl: any) {
     console.log('Clicked');
     console.log(targetEl); // will show the element in which the click event occured
@@ -48,7 +55,7 @@ export class ColorizerDirective{
 
     const newSpan = this.renderer.createElement('span'); //<span></span>
     this.renderer.setStyle(newSpan, 'font-size', '12px');
-    const developedByText = this.renderer.createText('Developed by Kalyan '); 
+    const developedByText = this.renderer.createText('Developed by Kalyan ');
     this.renderer.appendChild(newSpan, developedByText); //<span>Developed by Kalyan</span>
     this.renderer.appendChild(this.divEl, newSpan);
   }

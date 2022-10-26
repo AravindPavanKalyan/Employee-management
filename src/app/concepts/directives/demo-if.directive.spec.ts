@@ -9,6 +9,4 @@ describe('v', () => {
     const directive = new DemoIfDirective(ViewContainerRef, templateRef);
     expect(directive).toBeTruthy();
   });
-
 });
-

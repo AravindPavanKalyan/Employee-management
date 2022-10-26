@@ -1,11 +1,10 @@
 import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
 
 @Directive({
-  selector: '[appHighlight]'
+  selector: '[appHighlight]',
 })
 export class HighlightDirective implements OnChanges {
-
-  defaultColor =  'rgb(211, 211, 211)'; // lightgray
+  defaultColor = 'rgb(211, 211, 211)'; // lightgray
 
   @Input('appHighlight') bgColor = '';
 
@@ -14,7 +13,7 @@ export class HighlightDirective implements OnChanges {
   }
 
   ngOnChanges() {
-    this.el.nativeElement.style.backgroundColor = this.bgColor || this.defaultColor;
+    this.el.nativeElement.style.backgroundColor =
+      this.bgColor || this.defaultColor;
   }
-
 }

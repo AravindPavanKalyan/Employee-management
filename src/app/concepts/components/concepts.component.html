@@ -209,34 +209,33 @@
       aria-labelledby="pipes-tab"
     >
       <h2>Pipes</h2>
-      <p>{{dummyText}}</p>
-      <p>{{dummyText | lowercase}}</p>
-      <p>{{dummyText | uppercase}}</p>
-      <hr/>
-      <p>{{today | date}}</p>
+      <p>{{ dummyText }}</p>
+      <p>{{ dummyText | lowercase }}</p>
+      <p>{{ dummyText | uppercase }}</p>
+      <hr />
+      <p>{{ today | date }}</p>
       <!-- the following parameterixed pipe -->
-      <p>{{today | date: 'dd-MMM-yyyy'}}</p>
-      <p>{{today | date: 'MMMM dd ,yyyy hh:mm:ss a'}}</p>
+      <p>{{ today | date: "dd-MMM-yyyy" }}</p>
+      <p>{{ today | date: "MMMM dd ,yyyy hh:mm:ss a" }}</p>
 
-      <p>{{dummyText}}</p>
-      <p>{{dummyText | lowercase}}</p>
-      <p>{{dummyText | uppercase}}</p>
-      <hr/>
-      <p>{{today}}</p>
-      <p>{{today | date}}</p>
+      <p>{{ dummyText }}</p>
+      <p>{{ dummyText | lowercase }}</p>
+      <p>{{ dummyText | uppercase }}</p>
+      <hr />
+      <p>{{ today }}</p>
+      <p>{{ today | date }}</p>
       <!---parameterized pipes-->
-      <p>{{today | date: 'dd-mm-yyyy'}}</p>
-      <p>{{today | date: 'MMMM dd, yyyy hh:mm:ss a'}}</p>
+      <p>{{ today | date: "dd-mm-yyyy" }}</p>
+      <p>{{ today | date: "MMMM dd, yyyy hh:mm:ss a" }}</p>
 
-      <hr/>
-      <h3>Custom Pipes - Demo </h3>
+      <hr />
+      <h3>Custom Pipes - Demo</h3>
       <p>ng g p shared/pipes/ellipsis</p>
-      <p>{{dummyText}}</p>
-      <hr/>
-      <p>{{dummyText | ellipsis}}</p>
-      <p>{{dummyText | ellipsis: 50}}</p>
-      <p>{{dummyText | slice:0:50}}</p>
-
+      <p>{{ dummyText }}</p>
+      <hr />
+      <p>{{ dummyText | ellipsis }}</p>
+      <p>{{ dummyText | ellipsis: 50 }}</p>
+      <p>{{ dummyText | slice: 0:50 }}</p>
     </div>
   </div>
 </div>

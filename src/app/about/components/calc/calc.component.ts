@@ -8,17 +8,16 @@ import { Title } from '@angular/platform-browser';
       <h2>My Calculator | Testing the Calc...!</h2>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class CalcComponent implements OnInit {
   constructor(private titleService: Title) {
-    this.titleService.setTitle('Calc Page')
-
+    this.titleService.setTitle('Calc Page');
   }
 
   ngOnInit(): void {}
 
-  add(a: number, b: number): number{
-    return a+b;
+  add(a: number, b: number): number {
+    return a + b;
   }
 }

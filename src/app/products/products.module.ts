@@ -6,16 +6,12 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CartViewComponent } from './components/cart-view/cart-view.component';
 
-
 @NgModule({
   declarations: [
     ProductsListComponent,
     ProductDetailsComponent,
-    CartViewComponent
+    CartViewComponent,
   ],
-  imports: [
-    CommonModule,
-    ProductsRoutingModule
-  ]
+  imports: [CommonModule, ProductsRoutingModule],
 })
-export class ProductsModule { }
+export class ProductsModule {}

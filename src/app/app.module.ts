@@ -48,7 +48,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
     CounterComponent,
     HighlightDirective,
     PageNotFoundComponent,
-    EllipsisPipe
+    EllipsisPipe,
   ],
   imports: [
     BrowserModule,
@@ -59,13 +59,15 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true
-    }
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent] // appModule should be bootstraped with AppComponent
+  bootstrap: [AppComponent], // appModule should be bootstraped with AppComponent
 })
-export class AppModule { }
+export class AppModule {}

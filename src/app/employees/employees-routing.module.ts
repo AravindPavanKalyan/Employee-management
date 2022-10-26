@@ -7,20 +7,18 @@ import { EmployeeDetailsComponent } from './components/employee-details/employee
 import { AuthGuard } from '../shared/guards/auth.guard';
 
 const employeesRoutes: Routes = [
-  {path: 'employees', component: ListEmployeesComponent, canActivate: [ AuthGuard ]},
-  {path: 'employees/add', component: AddEmployeeComponent},
-  {path: 'employees/:id', component: EmployeeDetailsComponent}
-]
-
+  {
+    path: 'employees',
+    component: ListEmployeesComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'employees/add', component: AddEmployeeComponent },
+  { path: 'employees/:id', component: EmployeeDetailsComponent },
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(employeesRoutes)
-  ], // registering the child routes
-  exports: [
-    RouterModule
-  ]
+  imports: [CommonModule, RouterModule.forChild(employeesRoutes)], // registering the child routes
+  exports: [RouterModule],
 })
-export class EmployeesRoutingModule { }
+export class EmployeesRoutingModule {}

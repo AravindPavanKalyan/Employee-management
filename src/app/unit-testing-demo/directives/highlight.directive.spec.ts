@@ -15,11 +15,9 @@ import { HighlightDirective } from './highlight.directive';
     <div id="myDiv3" appHighlight>
       Testing Directive with MOck Comp --- lightgrey Color
     </div>
-    <div id="myDiv4">
-      Testing Directive with MOck Comp --- no bg Color
-    </div>
-    <input id="input1" value="unit testing input1" appHighlight="navy">
-  `
+    <div id="myDiv4">Testing Directive with MOck Comp --- no bg Color</div>
+    <input id="input1" value="unit testing input1" appHighlight="navy" />
+  `,
 })
 class MockComponent {} // No need to export as we will use this component here itself
 
@@ -30,38 +28,39 @@ describe('HighlightDirective', () => {
   let bareDiv: DebugElement;
 
   //step 2.1 preparing Mockcomponent for testing - loading it into the testing
-  beforeEach( () => {
+  beforeEach(() => {
     fixture = TestBed.configureTestingModule({
-      declarations: [
-        MockComponent,
-        HighlightDirective
-      ]
+      declarations: [MockComponent, HighlightDirective],
     }).createComponent(MockComponent);
 
     fixture.detectChanges(); // detecting the changes in html of mockcomp
 
-    highlightEl = fixture.debugElement.queryAll(By.directive(HighlightDirective));
+    highlightEl = fixture.debugElement.queryAll(
+      By.directive(HighlightDirective)
+    );
     bareDiv = fixture.debugElement.query(By.css('div:not(appHighlight)'));
-
-  })
+  });
 
   //step 2.2 let's test whether div of MockComponent has yellow bg color or not
   it('should have a <div> with bg color yellow', () => {
-    const highlightWrapperEl: HTMLElement = fixture.nativeElement.querySelector('#myDiv1');
+    const highlightWrapperEl: HTMLElement =
+      fixture.nativeElement.querySelector('#myDiv1');
     console.log(highlightWrapperEl);
     const bgColor = highlightWrapperEl.style.backgroundColor;
     expect(bgColor).toBe('yellow');
   });
 
   it('should have a <div> with bg color skyblue', () => {
-    const highlightWrapperEl: HTMLElement = fixture.nativeElement.querySelector('#myDiv2');
+    const highlightWrapperEl: HTMLElement =
+      fixture.nativeElement.querySelector('#myDiv2');
     console.log(highlightWrapperEl);
     const bgColor = highlightWrapperEl.style.backgroundColor;
     expect(bgColor).toBe('skyblue');
   });
 
   it('should have a <div> with bg color lightgrey', () => {
-    const highlightWrapperEl: HTMLElement = fixture.nativeElement.querySelector('#myDiv3');
+    const highlightWrapperEl: HTMLElement =
+      fixture.nativeElement.querySelector('#myDiv3');
     console.log(highlightWrapperEl);
     const bgColor = highlightWrapperEl.style.backgroundColor;
     expect(bgColor).toBe('rgb(211, 211, 211)');
@@ -76,7 +75,7 @@ describe('HighlightDirective', () => {
 
   // all elements with an attached HighlightDirective
   it('should have four highlighted elements', () => {
-    console.log(highlightEl)
+    console.log(highlightEl);
     expect(highlightEl.length).toBe(4);
   });
 
@@ -91,5 +90,4 @@ describe('HighlightDirective', () => {
   it('bare <div> should not have a bg color', () => {
     expect(bareDiv.properties['customProperty']).toBeUndefined();
   });
-
 });

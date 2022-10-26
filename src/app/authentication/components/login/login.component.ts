@@ -27,12 +27,13 @@ export class LoginComponent implements OnInit {
     this.authService.loginRequest(formData.value).subscribe({
       next: (res: any) => {
         console.log('comp', res);
-        if(res.token){
+        if (res.token) {
           console.log('27', res);
           // lets save the token in cookies/local storage/ session storages
           sessionStorage.setItem('authToken', res.token);
           // post login redirect to the return url
-          const redirectTo = this.activatedRoute.snapshot.queryParams['redirectTo'];
+          const redirectTo =
+            this.activatedRoute.snapshot.queryParams['redirectTo'];
           // console.log('redirectTo', redirectTo);
           this.toastr.success('Login successful');
           this.router.navigateByUrl(redirectTo);
@@ -40,11 +41,8 @@ export class LoginComponent implements OnInit {
       },
       error: (error: any) => {
         console.log('error in comp', error);
-        this.toastr.error(
-          'Email or password is incorrect'
-        );
+        this.toastr.error('Email or password is incorrect');
       },
     });
   }
-
 }

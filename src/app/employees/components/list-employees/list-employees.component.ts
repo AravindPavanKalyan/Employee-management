@@ -7,34 +7,36 @@ import { EmployeeService } from '../../services/employee.service';
 @Component({
   selector: 'app-list-employees',
   templateUrl: './list-employees.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class ListEmployeesComponent implements OnInit, OnDestroy {
-
   isLoading = true;
   employees: IEmployee[] = [];
   employeesSubscription!: Subscription;
 
-  constructor(private titleService: Title, private employeeService: EmployeeService) { 
+  constructor(
+    private titleService: Title,
+    private employeeService: EmployeeService
+  ) {
     this.titleService.setTitle('Employee Management');
-    console.log('Inside Constructor')
+    console.log('Inside Constructor');
   }
 
   ngOnInit(): void {
-    console.log('Inside ngOnInit')
+    console.log('Inside ngOnInit');
     // ideal place for REST API calls
     //2.send the req to the service
     // this.spinner.show();
     this.isLoading = true;
-    this.employeesSubscription =  this.employeeService.getEmployees()
-      .subscribe((res:IEmployee[]) => { // 3.get the res
+    this.employeesSubscription = this.employeeService
+      .getEmployees()
+      .subscribe((res: IEmployee[]) => {
+        // 3.get the res
         // console.log(res);
         this.employees = res;
         // this.spinner.hide();
         this.isLoading = false;
       });
-
   }
 
   ngOnDestroy(): void {
@@ -45,7 +47,5 @@ export class ListEmployeesComponent implements OnInit, OnDestroy {
     //   this.employees.length = 0;
     // }
     this.employeesSubscription.unsubscribe();
-    
   }
-
 }

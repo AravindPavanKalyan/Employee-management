@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-counter',
   templateUrl: './counter.component.html',
-  styles: []
+  styles: [],
 })
 export class CounterComponent implements OnInit {
   counterValue = 0;
@@ -14,7 +14,7 @@ export class CounterComponent implements OnInit {
   ngOnInit(): void {}
 
   handleIncrement() {
-    if(this.counterValue < 10){
+    if (this.counterValue < 10) {
       this.counterValue++;
       this.message = '';
     } else {
@@ -23,7 +23,7 @@ export class CounterComponent implements OnInit {
   }
 
   handleDecrement() {
-    if(this.counterValue > 0){
+    if (this.counterValue > 0) {
       this.counterValue--;
       this.message = '';
     } else {

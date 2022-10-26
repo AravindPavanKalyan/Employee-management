@@ -8,7 +8,6 @@ import { IAuthentication } from '../models/iauthentication';
   providedIn: 'root',
 })
 export class AuthService {
-  
   constructor(private http: HttpClient) {}
 
   signupUser(formData: IAuthentication) {
@@ -43,8 +42,8 @@ export class AuthService {
     );
   }
 
-  isAuth(): boolean{
-    if(sessionStorage.getItem('authToken')){
+  isAuth(): boolean {
+    if (sessionStorage.getItem('authToken')) {
       return true;
     } else {
       return false;
@@ -52,6 +51,6 @@ export class AuthService {
   }
 
   logoutReq() {
-    sessionStorage.removeItem('authToken')
+    sessionStorage.removeItem('authToken');
   }
 }
