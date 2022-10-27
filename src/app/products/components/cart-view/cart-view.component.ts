@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CartDataService } from 'src/app/shared/services/cart-data.service';
 import { IProduct } from '../../models/iproduct';
 
@@ -9,9 +9,9 @@ import { IProduct } from '../../models/iproduct';
   templateUrl: './cart-view.component.html',
   styles: [],
 })
-export class CartViewComponent implements OnInit, OnDestroy {
-  cartItemsList!: IProduct[];
-  cartItemSubscription!: Subscription;
+export class CartViewComponent implements OnInit{
+  cartItemsList!: Observable<IProduct[]>;
+  // cartItemSubscription!: Observable<IProduct[]>;
 
   constructor(
     private titleService: Title,
@@ -21,17 +21,18 @@ export class CartViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.cartItemSubscription = this.cartDataService.latestCartItems.subscribe(
-      (cartItems: IProduct[]) => {
-        this.cartItemsList = cartItems;
-        console.log('cartItems', cartItems);
-      }
-    );
+    this.cartItemsList = this.cartDataService.latestCartItems
+    // .subscribe(
+    //   (cartItems: IProduct[]) => {
+    //     this.cartItemsList = cartItems;
+    //     console.log('cartItems', cartItems);
+    //   }
+    // );
   }
 
-  ngOnDestroy(): void {
-    if (this.cartItemSubscription) {
-      this.cartItemSubscription.unsubscribe();
-    }
-  }
+  // ngOnDestroy(): void {
+  //   if (this.cartItemSubscription) {
+  //     this.cartItemSubscription.unsubscribe();
+  //   }
+  // }
 }

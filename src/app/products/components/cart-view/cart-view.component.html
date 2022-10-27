@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
       <!-- PRODUCT -->
-      <div class="row" *ngFor="let cartItem of cartItemsList">
+      <div class="row" *ngFor="let cartItem of cartItemsList | async">
         <div class="col-12 col-sm-12 col-md-2 text-center">
           <img
             class="img-responsive"
