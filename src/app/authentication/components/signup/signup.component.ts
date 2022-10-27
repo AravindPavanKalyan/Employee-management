@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { NavigationHelper } from 'src/app/shared/utils/navigation-helper';
+import { PasswordStrengthValidator } from 'src/app/shared/utils/password-strength-validator';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -28,6 +29,7 @@ export class SignupComponent implements OnInit {
         Validators.required,
         Validators.maxLength(12),
         Validators.minLength(6),
+        PasswordStrengthValidator()
       ]), // step5  let's work on validations
       confirmPassword: new FormControl('', [
         Validators.required,

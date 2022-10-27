@@ -67,6 +67,12 @@
         >
           Password minimum length is 6
         </div>
+        <div
+          *ngIf="signupForm.get('password')?.errors?.['passwordStrength']"
+          id="minLengthPassword"
+        >
+          Password should have atleast one upper case, one lower case and one numeric value
+        </div>
       </div>
     </div>
     <div class="form-floating">
