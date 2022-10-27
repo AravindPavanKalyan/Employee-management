@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   isAuth(): boolean {
-    if (sessionStorage.getItem('authToken')) {
+    if (localStorage.getItem('authToken')) {
       return true;
     } else {
       return false;
@@ -51,6 +51,6 @@ export class AuthService {
   }
 
   logoutReq() {
-    sessionStorage.removeItem('authToken');
+    localStorage.removeItem('authToken');
   }
 }

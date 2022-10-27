@@ -30,13 +30,18 @@ export class LoginComponent implements OnInit {
         if (res.token) {
           console.log('27', res);
           // lets save the token in cookies/local storage/ session storages
-          sessionStorage.setItem('authToken', res.token);
+          localStorage.setItem('authToken', res.token);
           // post login redirect to the return url
           const redirectTo =
             this.activatedRoute.snapshot.queryParams['redirectTo'];
           // console.log('redirectTo', redirectTo);
           this.toastr.success('Login successful');
           this.router.navigateByUrl(redirectTo);
+          setTimeout(() => {
+            localStorage.removeItem('authToken');
+            this.navigationHelper.navigateTo('/auth/login')
+            this.toastr.success('Last session timed out');
+          }, 10000);
         }
       },
       error: (error: any) => {

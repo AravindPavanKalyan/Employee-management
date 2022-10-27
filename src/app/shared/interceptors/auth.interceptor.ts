@@ -19,9 +19,9 @@ export class AuthInterceptor implements HttpInterceptor {
     console.log(request); // original http request
 
     //ideal is to update http req header with bearer token
-    // the token is saved in session storage
-    // let's access the token from session storage
-    const authToken = sessionStorage.getItem('authToken');
+    // the token is saved in local/session storage
+    // let's access the token from local/session storage
+    const authToken = localStorage.getItem('authToken');
 
     // now, let's manipulate the req header with the above authToken as bearer token
     request = request.clone({
