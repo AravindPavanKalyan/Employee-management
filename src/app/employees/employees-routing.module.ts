@@ -8,12 +8,12 @@ import { AuthGuard } from '../shared/guards/auth.guard';
 
 const employeesRoutes: Routes = [
   {
-    path: 'employees',
+    path: '',
     component: ListEmployeesComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'employees/add', component: AddEmployeeComponent },
-  { path: 'employees/:id', component: EmployeeDetailsComponent },
+  { path: 'add', component: AddEmployeeComponent },
+  { path: ':id', component: EmployeeDetailsComponent },
 ];
 
 @NgModule({

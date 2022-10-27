@@ -7,12 +7,12 @@ import { ProductsListComponent } from './components/products-list/products-list.
 
 const routes: Routes = [
   {
-    path: 'products',
+    path: '',
     component: ProductsListComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'products/cart', component: CartViewComponent },
-  { path: 'products/:id', component: ProductDetailsComponent },
+  { path: 'cart', component: CartViewComponent },
+  { path: ':id', component: ProductDetailsComponent },
 ];
 
 @NgModule({

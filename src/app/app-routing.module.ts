@@ -16,6 +16,18 @@ const routes: Routes = [
     component: UnitTestingDemoComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'employees',
+    loadChildren: () => import('./employees/employees.module').then(m => m.EmployeesModule)
+  },
+  {
+    path: 'products',
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
+  },
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ];
 
