@@ -63,15 +63,15 @@
         </div>
         <div
           *ngIf="signupForm.get('password')?.errors?.['minlength']"
-          id="minLengthPassword"
+          id="passwordValid"
         >
           Password minimum length is 6
         </div>
         <div
-          *ngIf="signupForm.get('password')?.errors?.['passwordStrength']"
-          id="minLengthPassword"
+          *ngIf="signupForm.get('password')?.errors?.['passwordStrength'] && !signupForm.get('password')?.errors?.['minlength']"
+          id="passwordStrength"
         >
-          Password should have atleast one upper case, one lower case and one numeric value
+          Password must have a upper case, lower case and a number in it.
         </div>
       </div>
     </div>
@@ -111,10 +111,10 @@
         </div>
       </div>
     </div>
-    <button
-      class="w-100 btn btn-lg btn-primary"
-      type="submit"
-      [disabled]="signupForm.invalid"
+  <button
+    class="w-100 btn btn-lg btn-primary"
+    type="submit"
+    [disabled]="signupForm.invalid"
     >
       Signup
     </button>

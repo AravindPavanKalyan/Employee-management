@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-cpb',
   template: `
-    <div>
+    <div style="border-color: green; border-width: 1px; border-style: solid; margin-bottom: 2px">
       Parent to child component communication
       <p>My Age : {{ age }}</p>
     </div>

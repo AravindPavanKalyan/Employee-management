@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
             localStorage.removeItem('authToken');
             this.navigationHelper.navigateTo('/auth/login')
             this.toastr.success('Last session timed out');
-          }, 10000);
+          }, 100000);
         }
       },
       error: (error: any) => {

@@ -4,7 +4,7 @@
   </p>
   <p>
     data receiveed from child component using viewChild:
-    {{ viewChildData?.name }}
+    {{ viewChildCebComponentData?.name }}
   </p>
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -148,7 +148,7 @@
         u r logged in! you can now access premium features of application
       </div>
       <ng-template #userLoggedOut>
-        <div class="alert alert-danger">
+        <div class="alert alert-warning">
           Please log in to access premium features of the app
         </div>
       </ng-template>
@@ -159,7 +159,7 @@
       <h3>[ngFor] demo</h3>
       <ul>
         <div *ngFor="let skill of skills; let i = index">
-          <li *ngIf="i < 4">{{ i + 1 }}. {{ skill }}</li>
+          <li *ngIf="skill!=='NodeJS'">{{ i + 1 }}. {{ skill }}</li>
         </div>
       </ul>
 

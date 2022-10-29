@@ -34,10 +34,10 @@ export class ConceptsComponent implements OnInit, AfterViewInit {
   ];
 
   // view child related
-  @ViewChild(CebComponent, { static: false }) child!: CebComponent;
+  @ViewChild(CebComponent, { static: false }) cebComponent!: CebComponent;
 
   // view_child related
-  viewChildData: any;
+  viewChildCebComponentData: any;
 
   //interpolation
   appName = 'Employee Manager App!';
@@ -72,8 +72,8 @@ export class ConceptsComponent implements OnInit, AfterViewInit {
 
   //view_child related
   ngAfterViewInit() {
-    console.log(this.child.profile);
-    this.viewChildData = this.child.profile;
+    console.log(this.cebComponent.profile);
+    this.viewChildCebComponentData = this.cebComponent.profile;
     this.cd.detectChanges();
   }
 
