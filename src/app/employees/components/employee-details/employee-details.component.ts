@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-employee-details',
@@ -9,7 +10,6 @@ import { ToastrService } from 'ngx-toastr';
   styles: [],
 })
 export class EmployeeDetailsComponent implements OnInit {
-  isLoading = true;
   employee: any;
   duplicateEmployee: any;
 
@@ -17,18 +17,19 @@ export class EmployeeDetailsComponent implements OnInit {
     public employeeService: EmployeeService,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private ngxSpinnerService: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
     // reading url param
     const empId: string | null = this.route.snapshot.paramMap.get('id');
-    this.isLoading = true;
+    this.ngxSpinnerService.show()
 
     this.employeeService.getEmployeeById(empId).subscribe((res: any) => {
       console.log(res);
       this.employee = res;
-      this.isLoading = false;
+      this.ngxSpinnerService.hide();
     });
   }
 

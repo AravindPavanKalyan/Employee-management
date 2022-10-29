@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { IEmployee } from '../../models/iemployee';
 import { EmployeeService } from '../../services/employee.service';
@@ -10,13 +11,13 @@ import { EmployeeService } from '../../services/employee.service';
   styles: [],
 })
 export class ListEmployeesComponent implements OnInit, OnDestroy {
-  isLoading = true;
   employees: IEmployee[] = [];
   employeesSubscription!: Subscription;
 
   constructor(
     private titleService: Title,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private ngxSpinnerService: NgxSpinnerService
   ) {
     this.titleService.setTitle('Employee Management');
     console.log('Inside Constructor');
@@ -26,16 +27,14 @@ export class ListEmployeesComponent implements OnInit, OnDestroy {
     console.log('Inside ngOnInit');
     // ideal place for REST API calls
     //2.send the req to the service
-    // this.spinner.show();
-    this.isLoading = true;
+    this.ngxSpinnerService.show()
     this.employeesSubscription = this.employeeService
       .getEmployees()
       .subscribe((res: IEmployee[]) => {
         // 3.get the res
         // console.log(res);
         this.employees = res;
-        // this.spinner.hide();
-        this.isLoading = false;
+        this.ngxSpinnerService.hide();
       });
   }
 

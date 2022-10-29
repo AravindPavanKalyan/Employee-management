@@ -25,6 +25,8 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EllipsisPipe } from './shared/pipes/ellipsis.pipe';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { ChildrenOutletContexts, RouterModule } from '@angular/router';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -50,8 +52,21 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: HomeComponent,
+        data: { animation: 'HomePage' }
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
+        data: { animation: 'AboutPage' }
+      }
+    ]),
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    NgxSpinnerModule,
     AppRoutingModule,
     HttpClientModule,
   ],
@@ -64,4 +79,11 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
   ],
   bootstrap: [AppComponent], // appModule should be bootstraped with AppComponent
 })
-export class AppModule {}
+export class AppModule {
+
+  constructor(private contexts: ChildrenOutletContexts) {}
+
+  getRouteAnimationData() {
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
+  }
+}

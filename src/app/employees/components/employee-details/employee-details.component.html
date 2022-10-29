@@ -1,8 +1,6 @@
 <a routerLink="/employees">Go back</a>
 <div class="container">
-  <div class="spinner-border" *ngIf="isLoading; else empDetails"></div>
 
-  <ng-template #empDetails>
     <div class="row">
       <div class="card col-md-12">
         <div class="card-body" *ngIf="employee">
@@ -210,5 +208,4 @@
 
       <!-- TODO: Show the loader /spinner-->
     </div>
-  </ng-template>
 </div>
