@@ -42,7 +42,7 @@ export class EmployeeService {
     return this.http.get<IEmployee[]>(environment.employeeRestApi).pipe(
       map((res: IEmployee[]) => {
         // 3. get the res
-        console.log(res);
+        console.log('IEmployee', res);
         // 4. send the res to comp
         return res;
       })
