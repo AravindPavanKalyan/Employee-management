@@ -1,7 +1,7 @@
 import { TemplateRef, ViewContainerRef } from '@angular/core';
 import { DemoIfDirective } from './demo-if.directive';
 
-describe('v', () => {
+describe('DemoIfDirective', () => {
   let ViewContainerRef: ViewContainerRef;
   let templateRef: TemplateRef<any>;
 
