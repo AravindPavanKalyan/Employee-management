@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { NavigationHelper } from 'src/app/shared/utils/navigation-helper';
 import { AuthService } from '../../services/auth.service';
 
@@ -12,6 +13,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  autoLogoutSubscription!: Subscription;
   constructor(
     private authService: AuthService,
     private toastr: ToastrService,
@@ -39,12 +41,13 @@ export class LoginComponent implements OnInit {
           // console.log('redirectTo', redirectTo);
           this.toastr.success('Login successful');
           this.router.navigateByUrl(redirectTo);
-          this.bnIdle.startWatching(600).subscribe((res) => { // idle time set to 600 secs for auto-logout
-            if(res) {
+          this.autoLogoutSubscription = this.bnIdle.startWatching(5).subscribe((res) => {// idle time set to 600 secs for auto-logout
+            if (res) {
               localStorage.removeItem('authToken');
-              this.navigationHelper.navigateTo('/auth/login')
               this.toastr.success('Last session timed out');
+              this.navigationHelper.navigateTo('/auth/login');
             }
+            this.autoLogoutSubscription.unsubscribe();
           });
         }
       },
@@ -54,4 +57,5 @@ export class LoginComponent implements OnInit {
       },
     });
   }
+
 }
