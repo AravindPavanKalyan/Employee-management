@@ -31,8 +31,6 @@ describe('ConceptsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ConceptsComponent);
     component = fixture.componentInstance;
-    component.child = TestBed.createComponent(CebComponent)
-      .componentInstance as CebComponent;
     fixture.detectChanges();
   });
 

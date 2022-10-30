@@ -105,10 +105,10 @@ describe('CounterComponent', () => {
     const counterComponentHTML = fixture.nativeElement as HTMLElement;
     expect(
       counterComponentHTML.querySelector('button.incrementBtn')?.textContent
-    ).toBe('Increment');
+    ).toBe(' Increment ');
     expect(
       counterComponentHTML.querySelector('button.decrementBtn')?.textContent
-    ).toBe('Decrement');
+    ).toBe(' Decrement ');
   });
 
   // testing inline styles of html

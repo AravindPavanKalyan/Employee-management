@@ -49,7 +49,7 @@ describe('UnitTestingDemoComponent', () => {
   });
 
   // approach #1 using timeout
-  it('has featureName as "Listing Employess" [approach #1]', fakeAsync(() => {
+  it('has featureName as "Testing the ngOnInit with fakeAsync and tick" [approach #1]', fakeAsync(() => {
     component.ngOnInit();
     tick(2001);
     expect(component.featureName).toEqual(

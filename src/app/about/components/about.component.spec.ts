@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AboutComponent } from './about.component';
 import { CalcComponent } from './calc/calc.component';
@@ -12,6 +13,9 @@ describe('AboutComponent', () => {
       declarations: [
         AboutComponent, 
         CalcComponent
+      ],
+      imports: [
+        BrowserAnimationsModule
       ]
     }).compileComponents();
   });
@@ -27,7 +31,7 @@ describe('AboutComponent', () => {
   });
 
   // eslint-disable-next-line quotes
-  it(`has featureName with 'About Us`, () => {
+  it(`has featureName with 'About Us'`, () => {
     expect(component.featureName).toEqual('About Us');
   });
 
