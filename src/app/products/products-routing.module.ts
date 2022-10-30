@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: ProductsListComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard], data: { animation: 'productListPage' }
   },
   { path: 'cart', component: CartViewComponent },
   { path: ':id', component: ProductDetailsComponent },
