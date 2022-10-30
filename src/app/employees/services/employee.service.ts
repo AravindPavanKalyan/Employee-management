@@ -7,7 +7,7 @@ import { IEmployee } from '../models/iemployee';
 @Injectable({
   providedIn: 'root', // This tells Angular to provide the service in the application root level
   // and the service will be created once (singleton service ) and
-  // provide the same instance in every module that injects this class.s
+  // provide the same instance in every module that injects this class.
 })
 export class EmployeeService {
   constructor(private http: HttpClient) {}
