@@ -11,7 +11,6 @@ import { IProduct } from '../../models/iproduct';
 })
 export class CartViewComponent implements OnInit{
   cartItemsList!: Observable<IProduct[]>;
-  // cartItemSubscription!: Observable<IProduct[]>;
 
   constructor(
     private titleService: Title,
@@ -21,18 +20,8 @@ export class CartViewComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    // async pipe method
     this.cartItemsList = this.cartDataService.latestCartItems
-    // .subscribe(
-    //   (cartItems: IProduct[]) => {
-    //     this.cartItemsList = cartItems;
-    //     console.log('cartItems', cartItems);
-    //   }
-    // );
   }
 
-  // ngOnDestroy(): void {
-  //   if (this.cartItemSubscription) {
-  //     this.cartItemSubscription.unsubscribe();
-  //   }
-  // }
 }

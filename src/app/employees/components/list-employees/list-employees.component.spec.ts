@@ -59,26 +59,7 @@ describe('ListEmployeesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // using timeout -- checking ajax call's response
-  // it('it has 10 employess initially', ((done) => {
-  //   component.ngOnInit();
-  //   setTimeout( () => {
-  //     expect(component.employees.length).toEqual(10)
-  //     done();
-  //   }, 4000);
-  // }));
-
-  // it('shoulld render employee named "Leanne Graham"', ((done) => {
-  //   component.ngOnInit();
-  //   setTimeout( () => {
-  //     fixture.detectChanges(); // after waiting for 4 sec, updates thehtml
-  //     console.log(fixture.nativeElement.querySelector('h5'));
-  //     expect(fixture.nativeElement.querySelector('h5').innerText).toBe('Leanne Graham');
-  //     done();
-  //   }, 4000);
-  // }));
-
-  // Challenges/Disadvantages of Testing Direct API Request like the above
+  // Challenges/Disadvantages of Testing Direct API Request
   //     1.Time consuming
   //     2.Backend REST API might have data inconsistencies
   //     3.Backend might not be stable/ may still be in development

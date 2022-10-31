@@ -33,12 +33,6 @@ describe('UnitTestingDemoComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should have skyblue <div>', () => {
-  //   const highlightWrapper = fixture.nativeElement.querySelector('[data-testid="highlightWrapper"]');
-  //   const bgColor = highlightWrapper.style.backgroundColor;
-  //   expect(bgColor).toBe('skyblue')
-  // });
-
   it('should have skyblue <div>', () => {
     const highlightWrapperEl: HTMLElement = fixture.nativeElement.querySelector(
       '[data-testid="highlightWrapper"]'
