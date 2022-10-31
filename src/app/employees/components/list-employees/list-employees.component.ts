@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { IEmployee } from '../../models/iemployee';
@@ -15,11 +14,9 @@ export class ListEmployeesComponent implements OnInit, OnDestroy {
   employeesSubscription!: Subscription;
 
   constructor(
-    private titleService: Title,
     private employeeService: EmployeeService,
     private ngxSpinnerService: NgxSpinnerService
   ) {
-    this.titleService.setTitle('Employee Management');
     console.log('Inside Constructor');
   }
 

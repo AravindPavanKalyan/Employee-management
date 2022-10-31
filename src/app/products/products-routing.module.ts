@@ -9,9 +9,9 @@ const routes: Routes = [
   {
     path: '',
     component: ProductsListComponent,
-    canActivate: [AuthGuard], data: { animation: 'productListPage' }
+    canActivate: [AuthGuard], data: { animation: 'productListPage', title: 'Products' }
   },
-  { path: 'cart', component: CartViewComponent },
+  { path: 'cart', component: CartViewComponent, data: { title: 'Cart' } },
   { path: ':id', component: ProductDetailsComponent },
 ];
 

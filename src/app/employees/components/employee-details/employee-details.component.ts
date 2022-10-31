@@ -59,7 +59,7 @@ export class EmployeeDetailsComponent implements OnInit {
     this.employeeService
       .deleteEmployee(this.employee.id)
       .subscribe((res: any) => {
-        this.toastr.success('deleted succesfully');
+        this.toastr.success('Deleted successfully');
         this.router.navigateByUrl('/employees');
         console.log('delete method', res);
       });

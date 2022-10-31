@@ -118,8 +118,14 @@ describe('CounterComponent', () => {
   });
 
   //testing whether the button elements have button class 'btn'
-  it('should have button class "btn" to the button elements', () => {
+  it('should have button class "btn" to the increment button elements', () => {
     const btnHTML = wrapper.querySelector('.incrementBtn');
+    expect(btnHTML).toHaveClass('btn');
+  });
+
+  //testing whether the button elements have button class 'btn'
+  it('should have button class "btn" to the decrement button elements', () => {
+    const btnHTML = wrapper.querySelector('.decrementBtn');
     expect(btnHTML).toHaveClass('btn');
   });
 

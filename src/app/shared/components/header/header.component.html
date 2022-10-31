@@ -15,28 +15,27 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <app-menu>
-          <li class="nav-item" menuComp>
+          <li class="nav-item" menuComp *ngIf="!this.authService.isAuth()">
             <a
               class="nav-link"
               routerLink="auth/login"
-              *ngIf="!this.authService.isAuth()"
               routerLinkActive="active"
               >Login</a
             >
+          </li>
+          <li class="nav-item" menuComp *ngIf="this.authService.isAuth()">
             <a
               class="nav-link"
               routerLink="auth/login"
-              *ngIf="this.authService.isAuth()"
               routerLinkActive="active"
               (click)="handleLogout()"
               >Logout</a
             >
           </li>
-          <li class="nav-item" menuComp>
+          <li class="nav-item" menuComp *ngIf="!this.authService.isAuth()">
             <a
               class="nav-link"
               routerLink="auth/signup"
-              *ngIf="!this.authService.isAuth()"
               routerLinkActive="active"
               >Signup</a
             >

@@ -21,6 +21,7 @@ import { Url } from 'url';
 })
 export class MenuComponent implements OnInit, AfterContentInit {
   menus = [
+    { link: '/', menuName: 'Home' },
     { link: '/concepts', menuName: 'Concepts' },
     { link: '/about', menuName: 'About' },
     { link: '/employees', menuName: 'Employee Management App' },

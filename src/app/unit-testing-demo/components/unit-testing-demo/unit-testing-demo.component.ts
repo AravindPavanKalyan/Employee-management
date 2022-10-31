@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-unit-testing-demo',
@@ -9,8 +8,7 @@ import { Title } from '@angular/platform-browser';
 export class UnitTestingDemoComponent implements OnInit {
   featureName!: string;
 
-  constructor(private titleService: Title) {
-    this.titleService.setTitle('Unit Testing');
+  constructor() {
   }
 
   ngOnInit(): void {

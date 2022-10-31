@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { CartDataService } from 'src/app/shared/services/cart-data.service';
 import { IProduct } from '../../models/iproduct';
 import { ProductsService } from '../../services/products.service';
@@ -13,11 +12,9 @@ export class ProductsListComponent implements OnInit {
   productList: IProduct[] = [];
 
   constructor(
-    private titleService: Title,
     private productService: ProductsService,
     private cartDataService: CartDataService
   ) {
-    this.titleService.setTitle('Products');
   }
 
   ngOnInit(): void {

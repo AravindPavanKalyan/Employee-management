@@ -8,13 +8,13 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { UnitTestingDemoComponent } from './unit-testing-demo/components/unit-testing-demo/unit-testing-demo.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard], data: { animation: 'homePage' } },
-  { path: 'concepts', component: ConceptsComponent, canActivate: [AuthGuard], data: { animation: 'conceptsPage' } },
-  { path: 'about', component: AboutComponent, canActivate: [AuthGuard], data: { animation: 'aboutPage' } },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard], data: { animation: 'homePage', title: 'Home'} },
+  { path: 'concepts', component: ConceptsComponent, canActivate: [AuthGuard], data: { animation: 'conceptsPage', title: 'Concepts' } },
+  { path: 'about', component: AboutComponent, canActivate: [AuthGuard], data: { animation: 'aboutPage', title: 'About Us' } },
   {
     path: 'unit-testing',
     component: UnitTestingDemoComponent,
-    canActivate: [AuthGuard], data: { animation: 'unitTestingPage' }
+    canActivate: [AuthGuard], data: { animation: 'unitTestingPage', title: 'Unit testing' }
   },
   {
     path: 'employees',

@@ -1,16 +1,7 @@
 <ul class="navbar-nav me-auto mb-2 mb-md-0">
   <ng-content [select]="backToTop"></ng-content>
-  <li class="nav-item">
-    <a
-      class="nav-link"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      routerLink="/"
-      >Home</a
-    >
-  </li>
   <li class="nav-item" *ngFor="let menu of menus">
-    <a class="nav-link" routerLinkActive="active" [routerLink]="menu.link">{{
+    <a class="nav-link" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active" [routerLink]="menu.link">{{
       menu.menuName
     }}</a>
   </li>

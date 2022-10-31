@@ -9,7 +9,6 @@ import {
   query,
   group,
 } from '@angular/animations';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -59,8 +58,7 @@ export class AboutComponent implements OnInit {
   progress: number = 0;
   label!: string;
 
-  constructor(private titleService: Title, private _ngZone: NgZone) {
-    this.titleService.setTitle('About Us');
+  constructor(private _ngZone: NgZone) {
   }
 
   ngOnInit(): void {}

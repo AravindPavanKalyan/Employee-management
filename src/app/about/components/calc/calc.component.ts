@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-calc',
@@ -11,9 +10,7 @@ import { Title } from '@angular/platform-browser';
   styles: [],
 })
 export class CalcComponent implements OnInit {
-  constructor(private titleService: Title) {
-    this.titleService.setTitle('Calc Page');
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 

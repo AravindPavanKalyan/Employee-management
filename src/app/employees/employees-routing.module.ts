@@ -10,7 +10,7 @@ const employeesRoutes: Routes = [
   {
     path: '',
     component: ListEmployeesComponent,
-    canActivate: [AuthGuard], data: { animation: 'employeesListPage' }
+    canActivate: [AuthGuard], data: { animation: 'employeesListPage', title: 'Employees' }
   },
   { path: 'add', component: AddEmployeeComponent },
   { path: ':id', component: EmployeeDetailsComponent },

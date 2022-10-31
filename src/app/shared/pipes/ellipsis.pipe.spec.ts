@@ -6,7 +6,7 @@ describe('EllipsisPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('transform random text to "random text"- when no paaams mentioned', () => {
+  it('transform random text to "random text"- when no params mentioned', () => {
     const pipe = new EllipsisPipe();
     const transformedText = pipe.transform('random text');
     expect(transformedText).toBe('random text');
