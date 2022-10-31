@@ -43,9 +43,8 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl(redirectTo);
           this.autoLogoutSubscription = this.bnIdle.startWatching(600).subscribe((res) => {// idle time set to 600 secs for auto-logout
             if (res) {
-              localStorage.removeItem('authToken');
+              this.authService.logoutReq();
               this.toastr.success('Last session timed out');
-              this.navigationHelper.navigateTo('/auth/login');
             }
             this.autoLogoutSubscription.unsubscribe();
           });

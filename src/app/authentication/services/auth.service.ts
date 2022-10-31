@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs';
+import { NavigationHelper } from 'src/app/shared/utils/navigation-helper';
 import { environment } from 'src/environments/environment';
 import { IAuthentication } from '../models/iauthentication';
 
@@ -8,7 +9,7 @@ import { IAuthentication } from '../models/iauthentication';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private navigationHelper: NavigationHelper) {}
 
   signupUser(formData: IAuthentication) {
     console.log('received in auth service', formData);
@@ -52,5 +53,6 @@ export class AuthService {
 
   logoutReq() {
     localStorage.removeItem('authToken');
+    this.navigationHelper.navigateTo('/auth/login');
   }
 }
