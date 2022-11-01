@@ -9,7 +9,7 @@ import { IProduct } from '../../models/iproduct';
   styles: [],
 })
 export class CartViewComponent implements OnInit{
-  cartItemsList!: Observable<IProduct[]>;
+  cartItemsList$!: Observable<IProduct[]>;
 
   constructor(
     private cartDataService: CartDataService
@@ -18,7 +18,7 @@ export class CartViewComponent implements OnInit{
 
   ngOnInit(): void {
     // async pipe method
-    this.cartItemsList = this.cartDataService.latestCartItems
+    this.cartItemsList$ = this.cartDataService.latestCartItems
   }
 
 }
