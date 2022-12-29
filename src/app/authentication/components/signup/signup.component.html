@@ -93,7 +93,7 @@
       <div class="invalid-feedback">
         <div
           id="confirmPasswordReqErrMsg"
-          *ngIf="signupForm.get('password')?.errors?.['required']"
+          *ngIf="signupForm.get('confirmPassword')?.errors?.['required']"
         >
           Password confirmation is required
         </div>
@@ -108,6 +108,12 @@
           id="minLengthPassword"
         >
           Password minimum length is 6
+        </div>
+        <div
+          *ngIf="signupForm.get('confirmPassword')?.errors?.['passwordStrength'] && !signupForm.get('confirmPassword')?.errors?.['minlength']"
+          id="confirmPassStrengthErrMsg"
+        >
+          Password must have a upper case, lower case and a number in it.
         </div>
       </div>
     </div>

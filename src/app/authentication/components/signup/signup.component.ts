@@ -35,6 +35,7 @@ export class SignupComponent implements OnInit {
         Validators.required,
         Validators.maxLength(12),
         Validators.minLength(6),
+        PasswordStrengthValidator()
       ]),
       // for step3 refer html
     });

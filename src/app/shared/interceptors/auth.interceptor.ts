@@ -16,7 +16,7 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    console.log(request); // original http request
+    console.log('request', request); // original http request
 
     //ideal is to update http req header with bearer token
     // the token is saved in local/session storage
